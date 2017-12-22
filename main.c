@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
-int				main(void){
+int				main(void)
+{
+	ft_putendl("sup fool");
 	return (0);
 }
