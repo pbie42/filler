@@ -65,5 +65,26 @@
 # include "../libft/includes/libftprintf.h"
 # include <term.h>
 
+typedef struct		s_plateau
+{
+	int				x;
+	int				y;
+	char				**p;
+}					t_plateau;
+
+typedef struct		s_piece
+{
+	int				x;
+	int				y;
+	char				**p;
+}					t_piece;
+
+typedef struct		s_play
+{
+	t_plateau		*plateau;
+	t_piece			*piece;
+	char				symbol;
+	int				player;
+}					t_play;
 
 #endif
