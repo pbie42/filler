@@ -69,14 +69,14 @@ typedef struct		s_plateau
 {
 	int				x;
 	int				y;
-	char				**p;
+	char				**board;
 }					t_plateau;
 
 typedef struct		s_piece
 {
 	int				x;
 	int				y;
-	char				**p;
+	char				**piece;
 }					t_piece;
 
 typedef struct		s_play
@@ -86,5 +86,7 @@ typedef struct		s_play
 	char				symbol;
 	int				player;
 }					t_play;
+
+void				parse_turn(t_play *play, int *part);
 
 #endif

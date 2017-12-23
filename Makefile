@@ -15,6 +15,7 @@ NAME = pbie.filler
 CFLAGS = -g -I includes
 
 SRC = main.c \
+		src/parsing.c \
 
 
 OBJ = $(SRC:.c=.o)
