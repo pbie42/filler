@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void				setup_struct(t_play *play)
+void				setup_turn(t_play *play, int *part)
 {
 	if (!play->plateau)
 		if (!(play->plateau = (t_plateau *)malloc(sizeof(t_plateau) * 1)))
@@ -25,31 +25,20 @@ void				setup_struct(t_play *play)
 	play->plateau->y = 0;
 	play->piece->x = 0;
 	play->piece->y = 0;
+	part[0] = 0;
+	part[1] = 0;
+	part[2] = 0;
 }
 
 int				main(void)
 {
-	int			i;
-	char			*str;
-	char			**line;
 	t_play		*play;
+	int			part[3];
 
 	if (!play)
-		if (!(play = (play *)malloc(sizeof(play) * 1)))
+		if (!(play = (t_play *)malloc(sizeof(t_play) * 1)))
 			ft_exit("Could not allocate play");
-	setup_struct(play);
-	i = 0;
-	while (ft_get_next_line(0, &str) > 0)
-	{
-		line = ft_strsplit(str, ' ');
-
-	}
-	while(line[i])
-	{
-		ft_putendl("we are in here fuckkkk");
-		ft_putendl(line[i]);
-		i++;
-	}
-	
+	setup_turn(play, part);
+	parse_turn(play, part);
 	return (0);
 }
