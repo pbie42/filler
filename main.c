@@ -14,17 +14,19 @@
 
 void				setup_turn(t_play *play, int *part)
 {
-	if (!play->plateau)
-		if (!(play->plateau = (t_plateau *)malloc(sizeof(t_plateau) * 1)))
-			ft_exit("Could not allocate plateau");
-	if (!play->piece)
-		if (!(play->piece = (t_piece *)malloc(sizeof(t_piece) * 1)))
-			ft_exit("Could not allocate piece");
+	if (!(play->plateau = (t_plateau *)malloc(sizeof(t_plateau) * 1)))
+		ft_exit("Could not allocate plateau");
+	if (!(play->piece = (t_piece *)malloc(sizeof(t_piece) * 1)))
+		ft_exit("Could not allocate piece");
+	ft_putendl("after mallocs");
 	play->player = 0;
+	ft_putendl("after player");
 	play->plateau->x = 0;
 	play->plateau->y = 0;
+	ft_putendl("after plateau");
 	play->piece->x = 0;
 	play->piece->y = 0;
+	ft_putendl("after plays");
 	part[0] = 0;
 	part[1] = 0;
 	part[2] = 0;
@@ -36,9 +38,14 @@ int				main(void)
 	int			part[3];
 
 	if (!play)
+	{
+		ft_putendl("no play");
 		if (!(play = (t_play *)malloc(sizeof(t_play) * 1)))
 			ft_exit("Could not allocate play");
+	}
+	ft_putendl("before setup");
 	setup_turn(play, part);
+	ft_putendl("after setup");
 	parse_turn(play, part);
 	return (0);
 }

@@ -15,6 +15,18 @@
 #define BOARD play->plateau->board
 #define PIECE play->piece->piece
 
+void				put_board(t_play *play)
+{
+	int			y;
+
+	ft_putendl(BOARD[0]);
+	y = -1;
+	while(BOARD[++y])
+	{
+		ft_putendl(BOARD[y]);
+	}
+}
+
 void				parse_piece(t_play *play, int *part, char **line)
 {
 	if (part[2] == 0)
@@ -23,13 +35,14 @@ void				parse_piece(t_play *play, int *part, char **line)
 		play->piece->x = ft_atoi(line[2]);
 		if (!(PIECE = (char **)malloc(sizeof(char *) * play->piece->y + 1)))
 			ft_exit("Could not allocate PIECE");
+		PIECE[play->piece->y] = NULL;
 	}
 	else if (part[2])
 		PIECE[part[2] - 1] = ft_strdup(line[0]);
 	part[2]++;
 	if (part[2] == play->piece->y + 1)
 	{
-		// Place piece
+		find_territory(play);
 	}
 }
 
@@ -41,9 +54,10 @@ void				parse_plateau(t_play *play, int *part, char **line)
 		play->plateau->x = ft_atoi(line[2]);
 		if (!(BOARD = (char **)malloc(sizeof(char *) * play->plateau->y + 1)))
 			ft_exit("Could not allocate BOARD");
+		BOARD[play->plateau->y] = NULL;
 	}
 	if (part[1] > 1)
-		BOARD[part[1] - 1] = ft_strdup(line[0]);
+		BOARD[part[1] - 2] = ft_strdup(line[1]);
 	part[1]++;
 }
 
