@@ -84,7 +84,7 @@ void					find_right(t_play *play)
 	int				y;
 
 	x = play->plateau->x;
-	while(--x <= 0)
+	while(--x >= 0)
 	{
 		y = -1;
 		while(BOARD[++y])
@@ -125,4 +125,12 @@ void					find_territory(t_play *play)
 	find_left(play);
 	find_right(play);
 	ft_putendl("found it all");
+	ft_putendlnbr("play->territory->bottom->x", play->territory->bottom->x);
+	ft_putendlnbr("play->territory->bottom->y", play->territory->bottom->y);
+	ft_putendlnbr("play->territory->top->x", play->territory->top->x);
+	ft_putendlnbr("play->territory->top->y", play->territory->top->y);
+	ft_putendlnbr("play->territory->left->x", play->territory->left->x);
+	ft_putendlnbr("play->territory->left->y", play->territory->left->y);
+	ft_putendlnbr("play->territory->right->x", play->territory->right->x);
+	ft_putendlnbr("play->territory->right->y", play->territory->right->y);
 }
