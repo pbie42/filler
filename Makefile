@@ -16,6 +16,7 @@ CFLAGS = -g -I includes
 
 SRC = main.c \
 		src/parsing.c \
+		src/territory.c \
 
 
 OBJ = $(SRC:.c=.o)

@@ -72,6 +72,20 @@ typedef struct		s_plateau
 	char				**board;
 }					t_plateau;
 
+typedef struct		s_coords
+{
+	int				x;
+	int				y;
+}					t_coords;
+
+typedef struct		s_territory
+{
+	t_coords			*top;
+	t_coords			*bottom;
+	t_coords			*left;
+	t_coords			*right;
+}					t_territory;
+
 typedef struct		s_piece
 {
 	int				x;
@@ -83,10 +97,12 @@ typedef struct		s_play
 {
 	t_plateau		*plateau;
 	t_piece			*piece;
+	t_territory		*territory;
 	char				symbol;
 	int				player;
 }					t_play;
 
 void				parse_turn(t_play *play, int *part);
+void				find_territory(t_play *play);
 
 #endif
