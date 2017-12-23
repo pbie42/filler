@@ -18,15 +18,17 @@ void				setup_turn(t_play *play, int *part)
 		ft_exit("Could not allocate plateau");
 	if (!(play->piece = (t_piece *)malloc(sizeof(t_piece) * 1)))
 		ft_exit("Could not allocate piece");
-	ft_putendl("after mallocs");
+	if (!(play->dir = (t_direction *)malloc(sizeof(t_direction) * 1)))
+		ft_exit("Could not allocate direction");
 	play->player = 0;
-	ft_putendl("after player");
 	play->plateau->x = 0;
 	play->plateau->y = 0;
-	ft_putendl("after plateau");
 	play->piece->x = 0;
 	play->piece->y = 0;
-	ft_putendl("after plays");
+	play->dir->up = FALSE;
+	play->dir->down = FALSE;
+	play->dir->left = FALSE;
+	play->dir->right = FALSE;
 	part[0] = 0;
 	part[1] = 0;
 	part[2] = 0;

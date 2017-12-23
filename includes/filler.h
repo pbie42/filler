@@ -65,6 +65,8 @@
 # include "../libft/includes/libftprintf.h"
 # include <term.h>
 
+typedef int					t_bool;
+
 typedef struct		s_plateau
 {
 	int				x;
@@ -93,16 +95,28 @@ typedef struct		s_piece
 	char				**piece;
 }					t_piece;
 
+typedef struct		s_direction
+{
+	t_bool			up;
+	t_bool			down;
+	t_bool			left;
+	t_bool			right;
+}					t_direction;
+
 typedef struct		s_play
 {
 	t_plateau		*plateau;
 	t_piece			*piece;
 	t_territory		*territory;
+	t_territory		*enemy;
+	t_direction		*dir;
 	char				symbol;
+	char				e_symbol;
 	int				player;
 }					t_play;
 
 void				parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
+void				find_enemy(t_play *play);
 
 #endif

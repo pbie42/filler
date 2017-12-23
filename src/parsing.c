@@ -43,6 +43,9 @@ void				parse_piece(t_play *play, int *part, char **line)
 	if (part[2] == play->piece->y + 1)
 	{
 		find_territory(play);
+		find_enemy(play);
+		
+		// place_piece(play);
 	}
 }
 
