@@ -15,9 +15,12 @@ NAME = pbie.filler
 CFLAGS = -g -I includes
 
 SRC = main.c \
+		src/coordinates.c \
+		src/diagonal.c \
 		src/enemy.c \
 		src/parsing.c \
 		src/placing.c \
+		src/straight.c \
 		src/territory.c \
 
 

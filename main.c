@@ -29,6 +29,8 @@ void				setup_turn(t_play *play, int *part)
 	play->dir->down = FALSE;
 	play->dir->left = FALSE;
 	play->dir->right = FALSE;
+	play->x = 0;
+	play->y = 0;
 	part[0] = 0;
 	part[1] = 0;
 	part[2] = 0;
