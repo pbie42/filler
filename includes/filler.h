@@ -118,5 +118,6 @@ typedef struct		s_play
 void				parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
 void				find_enemy(t_play *play);
+void				place_piece(t_play *play);
 
 #endif
