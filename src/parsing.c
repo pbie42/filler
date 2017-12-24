@@ -44,8 +44,7 @@ void				parse_piece(t_play *play, int *part, char **line)
 	{
 		find_territory(play);
 		find_enemy(play);
-		
-		// place_piece(play);
+		place_piece(play);
 	}
 }
 
@@ -71,6 +70,9 @@ void				parse_player(t_play *play, int *part, char **line)
 		play->symbol = 'o';
 	else
 		play->symbol = 'x';
+	ft_putstr("play->symbol is ");
+	ft_putchar(play->symbol);
+	ft_putendl("\n");
 	part[0]++;
 }
 
