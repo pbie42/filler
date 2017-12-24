@@ -113,11 +113,19 @@ typedef struct		s_play
 	char				symbol;
 	char				e_symbol;
 	int				player;
+	int				x;
+	int				y;
 }					t_play;
 
 void				parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
 void				find_enemy(t_play *play);
 void				place_piece(t_play *play);
+t_bool			piece_right(t_play *play);
+t_bool			piece_left(t_play *play);
+t_bool			piece_up(t_play *play);
+t_bool			piece_down(t_play *play);
+t_bool			can_place(t_play *play, int x, int y);
+void				compare_coords(t_play *play, int x, int y);
 
 #endif

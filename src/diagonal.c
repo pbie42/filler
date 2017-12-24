@@ -12,3 +12,117 @@
 
 #include "filler.h"
 
+void				piece_down_right(t_play *play)
+{
+	int			x;
+	int			y;
+	t_bool		down;
+	t_bool		right;
+
+	down = FALSE;
+	right = FALSE;
+	if (piece_down(play))
+	{
+		down = TRUE;
+		x = play->x;
+		y = play->y;
+	}
+	if (piece_right(play))
+		right = TRUE;
+	if (down)
+	{
+		if (right)
+			compare_coords(play, x, y);
+		else
+			ft_printf("%d %d\n", y, x);
+	}
+	else if (right)
+		ft_printf("%d %d\n", play->y, play->x);
+}
+
+void				piece_down_left(t_play *play)
+{
+	int			x;
+	int			y;
+	t_bool		down;
+	t_bool		left;
+
+	down = FALSE;
+	left = FALSE;
+	if (piece_down(play))
+	{
+		down = TRUE;
+		x = play->x;
+		y = play->y;
+	}
+	if (piece_left(play))
+		left = TRUE;
+	if (down)
+	{
+		if (left)
+			compare_coords(play, x, y);
+		else
+			ft_printf("%d %d\n", y, x);
+	}
+	else if (left)
+		ft_printf("%d %d\n", play->y, play->x);
+}
+
+void				piece_up_right(t_play *play)
+{
+	int			x;
+	int			y;
+	t_bool		up;
+	t_bool		right;
+
+	up = FALSE;
+	right = FALSE;
+	if (piece_up(play))
+	{
+		up = TRUE;
+		x = play->x;
+		y = play->y;
+	}
+	if (piece_right(play))
+		right = TRUE;
+	if (up)
+	{
+		if (right)
+			compare_coords(play, x, y);
+		else
+			ft_printf("%d %d\n", y, x);
+	}
+	else if (right)
+		ft_printf("%d %d\n", play->y, play->x);
+}
+
+void				piece_up_left(t_play *play)
+{
+	int			x;
+	int			y;
+	t_bool		up;
+	t_bool		left;
+
+	up = FALSE;
+	left = FALSE;
+	ft_putendl("before piece_down");
+	if (piece_up(play))
+	{
+		ft_putendl("in piece_down IF");
+		up = TRUE;
+		x = play->x;
+		y = play->y;
+	}
+	ft_putendl("after piece_down");
+	if (piece_left(play))
+		left = TRUE;
+	if (up)
+	{
+		if (left)
+			compare_coords(play, x, y);
+		else
+			ft_printf("%d %d\n", y, x);
+	}
+	else if (left)
+		ft_printf("%d %d\n", play->y, play->x);
+}

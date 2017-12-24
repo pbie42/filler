@@ -13,9 +13,57 @@
 #include "filler.h"
 
 #define BOARD play->plateau->board
+#define PIECE play->piece->piece
 #define ENEMY play->enemy
 #define ME play->territory
 #define DIR play->dir
+
+t_bool				can_place(t_play *play, int x, int y)
+{
+	int				px;
+	int				py;
+	int				count;
+
+	py = -1;
+	count = 0;
+	while(PIECE[++py])
+	{
+		// ft_putendl("in while y");
+		px = -1;
+		while(PIECE[py][++px])
+		{
+			// ft_putendl("in while x");
+			// ft_putstr("piece is ");
+			// ft_putchar(PIECE[py][px]);
+			// ft_putstr("board is ");
+			// ft_putchar(BOARD[y + py][x + px]);
+			if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->symbol
+				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
+				count++;
+			// if (BOARD[y + py][x + px] == play->e_symbol || BOARD[y + py][x + px] == ft_toupper(play->e_symbol))
+			// 	ft_putendl("yooooooooooooooooo");
+			if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->e_symbol
+				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
+			{
+				ft_putendl("e_symbol in way");
+				return (FALSE);
+			}
+		}
+	}
+	if (count == 1)
+	{
+		ft_putendl("count is fine");
+		play->x = x;
+		play->y = y;
+		return (TRUE);
+	}
+	else
+	{
+		ft_putendlnbr("count is ", count);
+		ft_putendl("count is off");
+		return (FALSE);
+	}
+}
 
 void					find_direction(t_play *play)
 {
@@ -53,19 +101,51 @@ void					place_piece(t_play *play)
 {
 	find_direction(play);
 	if (DIR->down && DIR->right)
+	{
 		ft_putendl("down right");
+		// piece_down(play);
+		// piece_right(play);
+		piece_down_right(play);
+	}
 	else if (DIR->down && DIR->left)
+	{
 		ft_putendl("down left");
+		// piece_down(play);
+		// piece_left(play);
+		piece_down_left(play);
+	}
 	else if (DIR->up && DIR->right)
+	{
 		ft_putendl("up right");
+		// piece_up(play);
+		// piece_right(play);
+		piece_up_right(play);
+	}
 	else if (DIR->up && DIR->left)
+	{
 		ft_putendl("up left");
+		// piece_up(play);
+		// piece_left(play);
+		piece_up_left(play);
+	}
 	else if (DIR->up)
+	{
 		ft_putendl("up");
+		piece_up(play);
+	}
 	else if (DIR->down)
+	{
 		ft_putendl("down");
+		piece_down(play);
+	}
 	else if (DIR->left)
+	{
 		ft_putendl("left");
+		piece_left(play);
+	}
 	else if (DIR->right)
+	{
 		ft_putendl("right");
+		piece_right(play);
+	}
 }
