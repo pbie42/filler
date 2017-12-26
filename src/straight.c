@@ -81,16 +81,22 @@ t_bool					piece_down(t_play *play)
 	int				x;
 	int				y;
 
+	ft_putendl("in piece_down");
 	y = play->plateau->y;
+	ft_putendlnbr("play->plateau->y", play->plateau->y);
 	while((--y - play->piece->y) >= 0)
 	{
+		ft_putendl("in while");
 		x = -1;
 		while(BOARD[y][++x + play->piece->x])
+		{
+			ft_putendl("in x while");
 			if (can_place(play, x, y))
 			{
 				ft_putendl("can place on bottom!");
 				return (TRUE);
 			}
+		}
 	}
 	ft_putendl("can NOT place on bottom!");
 	return (FALSE);

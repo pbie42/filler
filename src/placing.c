@@ -26,23 +26,30 @@ t_bool				can_place(t_play *play, int x, int y)
 
 	py = -1;
 	count = 0;
+	ft_putendl("in can place");
 	while(PIECE[++py])
 	{
-		// ft_putendl("in while y");
+		ft_putendl("in can while y");
 		px = -1;
 		while(PIECE[py][++px])
 		{
-			// ft_putendl("in while x");
+			ft_putendl("in can while x");
+			ft_putendlnbr("py", py);
+			ft_putendlnbr("px", px);
+			ft_putendlnbr("y", y);
+			ft_putendlnbr("x", x);
 			// ft_putstr("piece is ");
 			// ft_putchar(PIECE[py][px]);
 			// ft_putstr("board is ");
 			// ft_putchar(BOARD[y + py][x + px]);
-			if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->symbol
+			if (PIECE[py][px] == '*' && (y + py) < play->plateau->y
+				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
 				count++;
 			// if (BOARD[y + py][x + px] == play->e_symbol || BOARD[y + py][x + px] == ft_toupper(play->e_symbol))
 			// 	ft_putendl("yooooooooooooooooo");
-			if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->e_symbol
+			if (PIECE[py][px] == '*' && (y + py) < play->plateau->y
+				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
 			{
 				ft_putendl("e_symbol in way");

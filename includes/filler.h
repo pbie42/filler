@@ -125,6 +125,10 @@ t_bool			piece_right(t_play *play);
 t_bool			piece_left(t_play *play);
 t_bool			piece_up(t_play *play);
 t_bool			piece_down(t_play *play);
+void				piece_down_right(t_play *play);
+void				piece_down_left(t_play *play);
+void				piece_up_left(t_play *play);
+void				piece_up_right(t_play *play);
 t_bool			can_place(t_play *play, int x, int y);
 void				compare_coords(t_play *play, int x, int y);
 
