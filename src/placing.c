@@ -26,18 +26,18 @@ t_bool				can_place(t_play *play, int x, int y)
 
 	py = -1;
 	count = 0;
-	ft_putendl("in can place");
+	// ft_putendl("in can place");
 	while(PIECE[++py])
 	{
-		ft_putendl("in can while y");
+		// ft_putendl("in can while y");
 		px = -1;
 		while(PIECE[py][++px])
 		{
-			ft_putendl("in can while x");
-			ft_putendlnbr("py", py);
-			ft_putendlnbr("px", px);
-			ft_putendlnbr("y", y);
-			ft_putendlnbr("x", x);
+			// ft_putendl("in can while x");
+			// ft_putendlnbr("py", py);
+			// ft_putendlnbr("px", px);
+			// ft_putendlnbr("y", y);
+			// ft_putendlnbr("x", x);
 			// ft_putstr("piece is ");
 			// ft_putchar(PIECE[py][px]);
 			// ft_putstr("board is ");
@@ -52,22 +52,22 @@ t_bool				can_place(t_play *play, int x, int y)
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
 			{
-				ft_putendl("e_symbol in way");
+				// ft_putendl("e_symbol in way");
 				return (FALSE);
 			}
 		}
 	}
 	if (count == 1)
 	{
-		ft_putendl("count is fine");
+		// ft_putendl("count is fine");
 		play->x = x;
 		play->y = y;
 		return (TRUE);
 	}
 	else
 	{
-		ft_putendlnbr("count is ", count);
-		ft_putendl("count is off");
+		// ft_putendlnbr("count is ", count);
+		// ft_putendl("count is off");
 		return (FALSE);
 	}
 }
@@ -109,50 +109,54 @@ void					place_piece(t_play *play)
 	find_direction(play);
 	if (DIR->down && DIR->right)
 	{
-		ft_putendl("down right");
+		// ft_putendl("down right");
 		// piece_down(play);
 		// piece_right(play);
 		piece_down_right(play);
 	}
 	else if (DIR->down && DIR->left)
 	{
-		ft_putendl("down left");
+		// ft_putendl("down left");
 		// piece_down(play);
 		// piece_left(play);
 		piece_down_left(play);
 	}
 	else if (DIR->up && DIR->right)
 	{
-		ft_putendl("up right");
+		// ft_putendl("up right");
 		// piece_up(play);
 		// piece_right(play);
 		piece_up_right(play);
 	}
 	else if (DIR->up && DIR->left)
 	{
-		ft_putendl("up left");
+		// ft_putendl("up left");
 		// piece_up(play);
 		// piece_left(play);
 		piece_up_left(play);
 	}
 	else if (DIR->up)
 	{
-		ft_putendl("up");
-		piece_up(play);
+		// ft_putendl("up");
+		if (piece_up(play))
+			ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->down)
 	{
-		ft_putendl("down");
-		piece_down(play);
+		// ft_putendl("down");
+		if (piece_down(play))
+			ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->left)
 	{
-		ft_putendl("left");
-		piece_left(play);
+		// ft_putendl("left");
+		if (piece_left(play))
+			ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->right)
 	{
-		ft_putendl("right");
-		piece_right(play);
+		// ft_putendl("right");
+		if (piece_right(play))
+			ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 }

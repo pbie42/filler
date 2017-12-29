@@ -43,13 +43,13 @@ int				main(void)
 
 	if (!play)
 	{
-		ft_putendl("no play");
+		// ft_putendl("no play");
 		if (!(play = (t_play *)malloc(sizeof(t_play) * 1)))
 			ft_exit("Could not allocate play");
 	}
-	ft_putendl("before setup");
+	// ft_putendl("before setup");
 	setup_turn(play, part);
-	ft_putendl("after setup");
+	// ft_putendl("after setup");
 	parse_turn(play, part);
 	return (0);
 }

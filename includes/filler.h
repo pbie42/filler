@@ -130,6 +130,7 @@ void				piece_down_left(t_play *play);
 void				piece_up_left(t_play *play);
 void				piece_up_right(t_play *play);
 t_bool			can_place(t_play *play, int x, int y);
-void				compare_coords(t_play *play, int x, int y);
+void				compare_coords(t_play *play, int x, int y, char *str);
+int				ft_strhas(const char *s1, const char *s2);
 
 #endif
