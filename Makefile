@@ -18,6 +18,7 @@ SRC = main.c \
 		src/coordinates.c \
 		src/diagonal.c \
 		src/enemy.c \
+		src/ft_strhas.c \
 		src/parsing.c \
 		src/placing.c \
 		src/straight.c \
