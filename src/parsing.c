@@ -27,7 +27,7 @@ void				put_board(t_play *play)
 	}
 }
 
-void				parse_piece(t_play *play, int *part, char **line)
+int				parse_piece(t_play *play, int *part, char **line)
 {
 	// ft_putendl("parse_piece");
 	if (part[2] == 0)
@@ -48,8 +48,9 @@ void				parse_piece(t_play *play, int *part, char **line)
 		// ft_putstr("e_symbol is ");
 		// ft_putchar(play->e_symbol);
 		// ft_putchar('\n');
-		place_piece(play);
+		return place_piece(play);
 	}
+	return -1;
 }
 
 void				parse_plateau(t_play *play, int *part, char **line)
@@ -92,29 +93,30 @@ void				parse_turn(t_play *play, int *part)
 {
 	char			*str;
 	char			**line;
-	t_bool		p_found;
+	FILE * fp;
 
-	p_found = FALSE;
+	fp = fopen ("file.txt", "w+");
+	fprintf(fp, "new");
+	fclose(fp);
 	while (ft_get_next_line(0, &str) > 0)
 	{
+		fp = fopen ("file.txt", "ab");
+		fprintf(fp, "\n%s\r", str);
+		fclose(fp);
 		line = ft_strsplit(str, ' ');
 		// ft_putstr("line[0] is ");
 		// ft_putendl(line[0]);
-		if (!p_found && ft_strcmp(line[0], "$$$") == 0 && part[0] == 0)
+		if (ft_strcmp(line[0], "$$$") == 0 && part[0] == 0)
 		{
-			if (parse_player(play, part, line))
-			{
-				// ft_putendl("p_found");
-				p_found = TRUE;
-			}
+			parse_player(play, part, line);
 		}
-		else if (p_found && ft_strcmp(line[0], "$$$") != 0 && (ft_strcmp(line[0], "Plateau") == 0
-			|| (part[1] < play->plateau->y + 2 && ft_strcmp(line[0], "launched") != 0)))
+		else if (ft_strcmp(line[0], "Plateau") == 0
+			|| (part[1] < play->plateau->y + 2))
 			parse_plateau(play, part, line);
-		else if (p_found && ft_strcmp(line[0], "$$$") != 0 && (ft_strcmp(line[0], "Piece") == 0
-			|| (part[2] < play->piece->y + 1 && ft_strcmp(line[0], "launched") != 0)))
+		else if (ft_strcmp(line[0], "Piece") == 0
+			|| (part[2] < play->piece->y + 1))
 			parse_piece(play, part, line);
 		// ft_putendl("freeing");
-		free(line);
+		// free(line);
 	}
 }

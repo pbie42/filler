@@ -17,7 +17,7 @@
 #define ENEMY_L play->enemy->left
 #define ENEMY_R play->enemy->right
 
-void				dr_cmp(t_play *play, int x, int y)
+int				dr_cmp(t_play *play, int x, int y)
 {
 	int			pc;
 	int			xy;
@@ -31,17 +31,17 @@ void				dr_cmp(t_play *play, int x, int y)
 	if ((bottom - pc) < (bottom - xy))
 		if ((bottom - pc) < (left - pc))
 			if ((bottom - pc) < (left - xy))
-				ft_printf("%d %d\n", play->x, play->y);
+				return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	if ((bottom - xy) < (left - pc))
 		if ((bottom - xy) < (left - xy))
-			ft_printf("%d %d\n", x, y);
+			return ft_printf("%d %d\n", x + 1, y + 1);
 	if ((left - pc) < (left - xy))
-		ft_printf("%d %d\n", play->x, play->y);
+		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	else
-		ft_printf("%d %d\n", x, y);
+		return ft_printf("%d %d\n", x + 1, y + 1);
 
 }
-void				dl_cmp(t_play *play, int x, int y)
+int				dl_cmp(t_play *play, int x, int y)
 {
 	int			pc;
 	int			xy;
@@ -55,16 +55,16 @@ void				dl_cmp(t_play *play, int x, int y)
 	if ((bottom - pc) < (bottom - xy))
 		if ((bottom - pc) < (right - pc))
 			if ((bottom - pc) < (right - xy))
-				ft_printf("%d %d\n", play->x + 1, play->y + 1);
+				return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	if ((bottom - xy) < (right - pc))
 		if ((bottom - xy) < (right - xy))
-			ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", x + 1, y + 1);
 	if ((right - pc) < (right - xy))
-		ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	else
-		ft_printf("%d %d\n", x + 1, y + 1);
+		return ft_printf("%d %d\n", x + 1, y + 1);
 }
-void				ur_cmp(t_play *play, int x, int y)
+int				ur_cmp(t_play *play, int x, int y)
 {
 	int			pc;
 	int			xy;
@@ -78,16 +78,16 @@ void				ur_cmp(t_play *play, int x, int y)
 	if ((top - pc) < (top - xy))
 		if ((top - pc) < (left - pc))
 			if ((top - pc) < (left - xy))
-				ft_printf("%d %d\n", play->x + 1, play->y + 1);
+				return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	if ((top - xy) < (left - pc))
 		if ((top - xy) < (left - xy))
-			ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", x + 1, y + 1);
 	if ((left - pc) < (left - xy))
-		ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	else
-		ft_printf("%d %d\n", x + 1, y + 1);
+		return ft_printf("%d %d\n", x + 1, y + 1);
 }
-void				ul_cmp(t_play *play, int x, int y)
+int				ul_cmp(t_play *play, int x, int y)
 {
 	int			pc;
 	int			xy;
@@ -101,17 +101,17 @@ void				ul_cmp(t_play *play, int x, int y)
 	if ((top - pc) < (top - xy))
 		if ((top - pc) < (right - pc))
 			if ((top - pc) < (right - xy))
-				ft_printf("%d %d\n", play->x + 1, play->y + 1);
+				return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	if ((top - xy) < (right - pc))
 		if ((top - xy) < (right - xy))
-			ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", x + 1, y + 1);
 	if ((right - pc) < (right - xy))
-		ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	else
-		ft_printf("%d %d\n", x + 1, y + 1);
+		return ft_printf("%d %d\n", x + 1, y + 1);
 }
 
-void				compare_coords(t_play *play, int x, int y, char *str)
+int				compare_coords(t_play *play, int x, int y, char *str)
 {
 	// ft_putendl("in compare coords");
 	// ft_putendlnbr("play->x ", play->x);
@@ -120,13 +120,14 @@ void				compare_coords(t_play *play, int x, int y, char *str)
 	// ft_putendlnbr("y ", y);
 
 	if (play->x == x && play->y == y)
-		ft_printf("%d %d\n", x, y);
+		return ft_printf("%d %d\n", x, y);
 	else if (ft_strcmp(str, "dr") == 0)
-		dr_cmp(play, x, y);
+		return dr_cmp(play, x, y);
 	else if (ft_strcmp(str, "dl") == 0)
-		dl_cmp(play, x, y);
+		return dl_cmp(play, x, y);
 	else if (ft_strcmp(str, "ul") == 0)
-		ul_cmp(play, x, y);
+		return ul_cmp(play, x, y);
 	else if (ft_strcmp(str, "ur") == 0)
-		ur_cmp(play, x, y);
+		return ur_cmp(play, x, y);
+	return -1;
 }
