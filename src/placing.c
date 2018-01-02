@@ -104,7 +104,7 @@ void					find_direction(t_play *play)
 	}
 }
 
-void					place_piece(t_play *play)
+int					place_piece(t_play *play)
 {
 	find_direction(play);
 	if (DIR->down && DIR->right)
@@ -112,51 +112,52 @@ void					place_piece(t_play *play)
 		// ft_putendl("down right");
 		// piece_down(play);
 		// piece_right(play);
-		piece_down_right(play);
+		return piece_down_right(play);
 	}
 	else if (DIR->down && DIR->left)
 	{
 		// ft_putendl("down left");
 		// piece_down(play);
 		// piece_left(play);
-		piece_down_left(play);
+		return piece_down_left(play);
 	}
 	else if (DIR->up && DIR->right)
 	{
 		// ft_putendl("up right");
 		// piece_up(play);
 		// piece_right(play);
-		piece_up_right(play);
+		return piece_up_right(play);
 	}
 	else if (DIR->up && DIR->left)
 	{
 		// ft_putendl("up left");
 		// piece_up(play);
 		// piece_left(play);
-		piece_up_left(play);
+		return piece_up_left(play);
 	}
 	else if (DIR->up)
 	{
 		// ft_putendl("up");
 		if (piece_up(play))
-			ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->down)
 	{
 		// ft_putendl("down");
 		if (piece_down(play))
-			ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->left)
 	{
 		// ft_putendl("left");
 		if (piece_left(play))
-			ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
 	else if (DIR->right)
 	{
 		// ft_putendl("right");
 		if (piece_right(play))
-			ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
 	}
+	return -1;
 }

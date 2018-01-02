@@ -120,17 +120,17 @@ typedef struct		s_play
 void				parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
 void				find_enemy(t_play *play);
-void				place_piece(t_play *play);
+int				place_piece(t_play *play);
 t_bool			piece_right(t_play *play);
 t_bool			piece_left(t_play *play);
 t_bool			piece_up(t_play *play);
 t_bool			piece_down(t_play *play);
-void				piece_down_right(t_play *play);
-void				piece_down_left(t_play *play);
-void				piece_up_left(t_play *play);
-void				piece_up_right(t_play *play);
+int				piece_down_right(t_play *play);
+int				piece_down_left(t_play *play);
+int				piece_up_left(t_play *play);
+int				piece_up_right(t_play *play);
 t_bool			can_place(t_play *play, int x, int y);
-void				compare_coords(t_play *play, int x, int y, char *str);
+int				compare_coords(t_play *play, int x, int y, char *str);
 int				ft_strhas(const char *s1, const char *s2);
 
 #endif
