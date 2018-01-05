@@ -93,16 +93,14 @@ void				parse_turn(t_play *play, int *part)
 {
 	char			*str;
 	char			**line;
+	int			i;
 	FILE * fp;
 
-	fp = fopen ("file.txt", "w+");
-	fprintf(fp, "new");
-	fclose(fp);
+	i = 0;
+	fp = fopen ("file.txt", "a");
 	while (ft_get_next_line(0, &str) > 0)
 	{
-		fp = fopen ("file.txt", "ab");
-		fprintf(fp, "\n%s\r", str);
-		fclose(fp);
+		fprintf(fp, "\n%s", str);
 		line = ft_strsplit(str, ' ');
 		// ft_putstr("line[0] is ");
 		// ft_putendl(line[0]);
@@ -117,6 +115,32 @@ void				parse_turn(t_play *play, int *part)
 			|| (part[2] < play->piece->y + 1))
 			parse_piece(play, part, line);
 		// ft_putendl("freeing");
-		// free(line);
+		free(line);
+		free(str);
 	}
 }
+
+// void				parse_turn(t_play *play, int *part)
+// {
+// 	char			*str;
+// 	char			**line;
+// 	int			i;
+// 	FILE * fp;
+
+// 	i = 0;
+// 	fp = fopen ("file.txt", "a");
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// }
