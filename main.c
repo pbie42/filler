@@ -53,3 +53,30 @@ int				main(void)
 	parse_turn(play, part);
 	return (0);
 }
+
+// int				main(void)
+// {
+// 	char			*str;
+// 	// char			**line;
+// 	// int			i;
+// 	FILE * fp;
+
+// 	// i = 0;
+// 	fp = fopen("file.txt", "a");
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	free(str);
+// 	ft_get_next_line(0, &str);
+// 	fprintf(fp, "\n%s\n", str);
+// 	fclose(fp);
+// 	return (0);
+// }

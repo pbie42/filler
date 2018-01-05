@@ -34,10 +34,10 @@ int				piece_down_right(t_play *play)
 		if (right)
 			return compare_coords(play, x, y, "dr");
 		else
-			return ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", y, x);
 	}
 	else if (right)
-		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->y, play->x);
 	return -1;
 }
 
@@ -63,10 +63,10 @@ int				piece_down_left(t_play *play)
 		if (left)
 			return compare_coords(play, x, y, "dl");
 		else
-			return ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", y, x);
 	}
 	else if (left)
-		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->y, play->x);
 	return -1;
 }
 
@@ -92,10 +92,10 @@ int				piece_up_right(t_play *play)
 		if (right)
 			return compare_coords(play, x, y, "ur");
 		else
-			return ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", y, x);
 	}
 	else if (right)
-		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->y, play->x);
 	return -1;
 }
 
@@ -124,9 +124,9 @@ int				piece_up_left(t_play *play)
 		if (left)
 			return compare_coords(play, x, y, "ul");
 		else
-			return ft_printf("%d %d\n", x + 1, y + 1);
+			return ft_printf("%d %d\n", y, x);
 	}
 	else if (left)
-		return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+		return ft_printf("%d %d\n", play->y, play->x);
 	return -1;
 }

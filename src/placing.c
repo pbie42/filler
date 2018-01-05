@@ -139,25 +139,25 @@ int					place_piece(t_play *play)
 	{
 		// ft_putendl("up");
 		if (piece_up(play))
-			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->y, play->x);
 	}
 	else if (DIR->down)
 	{
 		// ft_putendl("down");
 		if (piece_down(play))
-			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->y, play->x);
 	}
 	else if (DIR->left)
 	{
 		// ft_putendl("left");
 		if (piece_left(play))
-			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->y, play->x);
 	}
 	else if (DIR->right)
 	{
 		// ft_putendl("right");
 		if (piece_right(play))
-			return ft_printf("%d %d\n", play->x + 1, play->y + 1);
+			return ft_printf("%d %d\n", play->y, play->x);
 	}
 	return -1;
 }
