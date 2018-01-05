@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_percentage.c                                 :+:      :+:    :+:   */
+/*   oct_change.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/07 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2018/01/04 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2018/01/04 14:57:01 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void				print_percentage(t_pf_item *pfi)
+char				*oct_change(t_pf_item *pfi, intmax_t n)
 {
-	print_char(pfi, '%');
+	char			*tmp;
+	intmax_t		oct;
+
+	if (!pfi->cspecs->lg_o && pfi->lenmods->hh)
+		n = (unsigned char)n;
+	if (!pfi->cspecs->lg_o && pfi->lenmods->h)
+		n = (unsigned short)n;
+	if (!pfi->cspecs->lg_o)
+		n = (unsigned int)n;
+	oct = ft_dec_to_oct(n);
+	tmp = ft_llitoa(oct);
+	return (tmp);
 }

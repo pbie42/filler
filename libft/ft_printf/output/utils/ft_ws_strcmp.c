@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_percentage.c                                 :+:      :+:    :+:   */
+/*   ft_ws_strcmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/07 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2018/01/04 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2018/01/04 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void				print_percentage(t_pf_item *pfi)
+int			ft_ws_strcmp(const wchar_t *s1, const wchar_t *s2)
 {
-	print_char(pfi, '%');
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((wchar_t)s1[i] - (wchar_t)s2[i]);
 }

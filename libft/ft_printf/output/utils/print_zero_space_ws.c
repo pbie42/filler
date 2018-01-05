@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_percentage.c                                 :+:      :+:    :+:   */
+/*   print_zero_space_ws.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/07 15:19:09 by pbie             ###   ########.fr       */
+/*   Created: 2018/01/04 15:16:39 by pbie              #+#    #+#             */
+/*   Updated: 2018/01/04 15:19:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void				print_percentage(t_pf_item *pfi)
+int				print_zero_space_ws(t_pf_item *pfi, int width)
 {
-	print_char(pfi, '%');
+	if (pfi->flags->zero)
+		ft_putchar('0');
+	else
+		ft_putchar(' ');
+	pfi->bytes++;
+	width--;
+	return (width);
 }
