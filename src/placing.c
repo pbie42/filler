@@ -60,6 +60,8 @@ t_bool				can_place(t_play *play, int x, int y)
 	if (count == 1)
 	{
 		// ft_putendl("count is fine");
+		// ft_putendlnbr("x is ", x);
+		// ft_putendlnbr("y is ", y);
 		play->x = x;
 		play->y = y;
 		return (TRUE);
