@@ -27,7 +27,7 @@ void				put_board(t_play *play)
 	}
 }
 
-int				parse_piece(t_play *play, int *part, char **line)
+void				parse_piece(t_play *play, int *part, char **line)
 {
 	// ft_putendl("parse_piece");
 	if (part[2] == 0)
@@ -48,9 +48,9 @@ int				parse_piece(t_play *play, int *part, char **line)
 		// ft_putstr("e_symbol is ");
 		// ft_putchar(play->e_symbol);
 		// ft_putchar('\n');
-		return place_piece(play);
+		place_piece(play);
+		setup_turn(play, part);
 	}
-	return -1;
 }
 
 void				parse_plateau(t_play *play, int *part, char **line)
