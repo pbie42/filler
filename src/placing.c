@@ -40,8 +40,16 @@ t_bool				can_place(t_play *play, int x, int y)
 			// ft_putendlnbr("x", x);
 			// ft_putstr("piece is ");
 			// ft_putchar(PIECE[py][px]);
+			// ft_putchar('\n');
 			// ft_putstr("board is ");
 			// ft_putchar(BOARD[y + py][x + px]);
+			// ft_putchar('\n');
+			// ft_putnbr(x);
+			// ft_putendlnbr(" ", y);
+			// // ft_putchar('\n');
+			// if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->symbol
+			// 	|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
+			// 	ft_putendl("YES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			if (PIECE[py][px] == '*' && (y + py) < play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
@@ -106,6 +114,26 @@ void					find_direction(t_play *play)
 	}
 }
 
+void					place_anywhere(t_play * play)
+{
+	int				x;
+	int				y;
+
+	y = -1;
+	while (BOARD[++y])
+	{
+		x = -1;
+		while (BOARD[y][++x])
+		{
+			if (can_place(play, x, y))
+			{
+				ft_printf("%d %d\n", play->y, play->x);
+				return ;
+			}
+		}
+	}
+}
+
 int					place_piece(t_play *play)
 {
 	find_direction(play);
@@ -161,5 +189,8 @@ int					place_piece(t_play *play)
 		if (piece_right(play))
 			return ft_printf("%d %d\n", play->y, play->x);
 	}
+	else
+		place_anywhere(play);
+		// ft_putendl("we here");
 	return -1;
 }

@@ -23,12 +23,16 @@ t_bool					piece_right(t_play *play)
 	while((--x - play->piece->x) >= 0)
 	{
 		y = -1;
+		// ft_putendl("x");
 		while(BOARD[++y + play->piece->y])
+		{
+			// ft_putendl("y");
 			if (can_place(play, x, y))
 			{
 				// ft_putendl("can place on right!");
 				return (TRUE);
 			}
+		}
 	}
 	// ft_putendl("can NOT place on right!");
 	return (FALSE);

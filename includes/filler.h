@@ -132,5 +132,6 @@ int				piece_up_right(t_play *play);
 t_bool			can_place(t_play *play, int x, int y);
 int				compare_coords(t_play *play, int x, int y, char *str);
 int				ft_strhas(const char *s1, const char *s2);
+void				setup_turn(t_play *play, int *part);
 
 #endif
