@@ -45,6 +45,7 @@ void				parse_piece(t_play *play, int *part, char **line)
 	{
 		find_territory(play);
 		find_enemy(play);
+		find_piece(play);
 		// ft_putstr("e_symbol is ");
 		// ft_putchar(play->e_symbol);
 		// ft_putchar('\n');
