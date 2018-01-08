@@ -1,0 +1,82 @@
+$$$ exec p1 : [../pbie.filler]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXX.
+001 XXXXXXXXXXXXXXXX.
+002 XXXXXXXXXXXXXXXX.
+003 OOOOOOOOXXXXXXXX.
+004 OOOOOOOOXXXXXXXX.
+005 OOOOOOOOXXXXXXXX.
+006 OOOOOOXXXXXXXXXX.
+007 OOOOOOOXXXXXXXXX.
+008 OOOOOOOXXXXXXXxx.
+009 OOOOOOOOOXXXXXXX.
+010 OOOOOOOOOOOOXXXX.
+011 OOOOOOOOOOOOXXX..
+012 OOOOOOOOOOOOOOXO.
+013 ......OOOOO..OOO.
+014 .................
+Piece 2 2:
+**
+**
+
+$$$ exec p1 : [../pbie.filler]
+Plateau 15 17:
+    01234567890123456
+000 .......OOOOOOOOO.
+001 .......OOOOOOOOO.
+002 ......OOOOOOOOOO.
+003 .....OOOOOOOOXXXX
+004 .....OOOOOOOXXXXX
+005 oooO.OOOOOOOXXXXX
+006 OOOOOOOOOOOXXXXXX
+007 OOOOOOOOOOXXXXXXX
+008 OOOOOOOOOOOXXXXXX
+009 OOOOOOOOOOOOXXXXX
+010 OOOOOOOOOOOOOXXXX
+011 OOOOOOOOOOOOOOXXX
+012 OOOOOOOOXXXXXXXXX
+013 OOOOOOXXXXXXXXXXX
+014 .XXXXXXXXXXXXXXXX
+Piece 9 6:
+......
+......
+......
+......
+......
+....*.
+....**
+......
+......
+
+$$$ exec p1 : [../pbie.filler]
+Plateau 24 40:
+    0123456789012345678901234567890123456789
+000 .....................OOOOOO.............
+001 .........OOO......OOOOOO................
+002 .....O..OOOO....OOOO.O..................
+003 ...OOOOOOO.OOOOOO.......................
+004 ...........OOO....................x.....
+005 ..................................xxx...
+006 ....................................xX..
+007 ....................................XX..
+008 ...................................XXXX.
+009 ...................................XXX..
+010 ...................................XX.X.
+011 ..................................XXXXX.
+012 ....................................XX..
+013 ...................................XXXX.
+014 ......................................X.
+015 ...................................XX.XX
+016 ....................................XXX.
+017 ................................XXXXXXXX
+018 .....................................X..
+019 ................................XXXXXX..
+020 ........................................
+021 ........................................
+022 ........................................
+023 ........................................
+Piece 3 4:
+....
+....
+..**

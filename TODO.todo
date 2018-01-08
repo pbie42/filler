@@ -1,2 +1,3 @@
 Improvements:
-	A piece's extra space can go outside of the play area.
+	✔ A piece's extra space can go outside of the play area. @done (2018-1-8 19:06:07)
+	☐ Handle sending negative numbers if necessary
