@@ -25,14 +25,14 @@ void					find_piece_top(t_play *play)
 	int				y;
 
 	y = -1;
-	ft_putendl("in top");
+	// ft_putendl("in top");
 	while (PIECE[++y])
 	{
-		ft_putendl("in top y");
+		// ft_putendl("in top y");
 		x = -1;
 		while(PIECE[y][++x])
 		{
-			ft_putendl("in top x");
+			// ft_putendl("in top x");
 			if (PIECE[y][x] == '*')
 			{
 				TOP->x = x;
@@ -112,7 +112,7 @@ void					find_piece(t_play *play)
 		ft_exit("Could not allocate piece left");
 	if (!(RIGHT = (t_coords *)malloc(sizeof(t_coords) * 1)))
 		ft_exit("Could not allocate piece right");
-	ft_putendl("after allocation of find piece");
+	// ft_putendl("after allocation of find piece");
 	TOP->y = 0;
 	TOP->x = 0;
 	BOTTOM->x = 0;
@@ -121,22 +121,22 @@ void					find_piece(t_play *play)
 	LEFT->y = 0;
 	RIGHT->x = 0;
 	RIGHT->y = 0;
-	ft_putendl("before find piece!");
+	// ft_putendl("before find piece!");
 	find_piece_top(play);
-	ft_putendl("after top");
+	// ft_putendl("after top");
 	find_piece_bottom(play);
-	ft_putendl("after bottom");
+	// ft_putendl("after bottom");
 	find_piece_left(play);
-	ft_putendl("after left");
+	// ft_putendl("after left");
 	find_piece_right(play);
-	ft_putendl("after right");
-	ft_putendl("found all of PIECE!!");
-	ft_putendlnbr("play->piece->terr->bottom->x", BOTTOM->x);
-	ft_putendlnbr("play->piece->terr->bottom->y", BOTTOM->y);
-	ft_putendlnbr("play->piece->terr->top->x", TOP->x);
-	ft_putendlnbr("play->piece->terr->top->y", TOP->y);
-	ft_putendlnbr("play->piece->terr->left->x", LEFT->x);
-	ft_putendlnbr("play->piece->terr->left->y", LEFT->y);
-	ft_putendlnbr("play->piece->terr->right->x", RIGHT->x);
-	ft_putendlnbr("play->piece->terr->right->y", RIGHT->y);
+	// ft_putendl("after right");
+	// ft_putendl("found all of PIECE!!");
+	// ft_putendlnbr("play->piece->terr->bottom->x", BOTTOM->x);
+	// ft_putendlnbr("play->piece->terr->bottom->y", BOTTOM->y);
+	// ft_putendlnbr("play->piece->terr->top->x", TOP->x);
+	// ft_putendlnbr("play->piece->terr->top->y", TOP->y);
+	// ft_putendlnbr("play->piece->terr->left->x", LEFT->x);
+	// ft_putendlnbr("play->piece->terr->left->y", LEFT->y);
+	// ft_putendlnbr("play->piece->terr->right->x", RIGHT->x);
+	// ft_putendlnbr("play->piece->terr->right->y", RIGHT->y);
 }

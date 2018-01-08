@@ -13,20 +13,32 @@
 #include "filler.h"
 
 #define BOARD play->plateau->board
+#define TOP play->piece->terr->top
+#define BOTTOM play->piece->terr->bottom
+#define LEFT play->piece->terr->left
+#define RIGHT play->piece->terr->right
+#define WIDTH (RIGHT->x + 1) - LEFT->x
+#define HEIGHT (BOTTOM->y + 1) - TOP->y
 
 t_bool					piece_right(t_play *play)
 {
 	int				x;
 	int				y;
 
-	x = play->plateau->x;
-	while((--x - play->piece->x) >= 0)
+	x = play->plateau->x - WIDTH;
+	// ft_putendlnbr("WIDTH ", WIDTH);
+	// ft_putendlnbr("HEIGHT ", HEIGHT);
+	while(--x >= 0)
 	{
 		y = -1;
 		// ft_putendl("x");
-		while(BOARD[++y + play->piece->y])
+		while(BOARD[++y + HEIGHT])
 		{
 			// ft_putendl("y");
+			// ft_putendlnbr("x ", x);
+			// ft_putendlnbr("y ", y);
+			// ft_putendlnbr("y + HEIGHT ", y + HEIGHT);
+			// ft_putchar('\n');
 			if (can_place(play, x, y))
 			{
 				// ft_putendl("can place on right!");
@@ -44,10 +56,10 @@ t_bool					piece_left(t_play *play)
 	int				y;
 
 	x = -1;
-	while((++x + play->piece->x) <= play->plateau->x)
+	while((++x + WIDTH) <= play->plateau->x)
 	{
 		y = -1;
-		while(BOARD[++y + play->piece->y])
+		while(BOARD[++y + HEIGHT])
 		{
 			if (can_place(play, x, y))
 			{
@@ -66,10 +78,10 @@ t_bool					piece_up(t_play *play)
 	int				y;
 
 	y = -1;
-	while(BOARD[++y + play->piece->y])
+	while(BOARD[++y + HEIGHT])
 	{
 		x = -1;
-		while(BOARD[y][++x + play->piece->x])
+		while(BOARD[y][++x + WIDTH])
 			if (can_place(play, x, y))
 			{
 				// ft_putendl("can place on top!");
@@ -85,14 +97,13 @@ t_bool					piece_down(t_play *play)
 	int				x;
 	int				y;
 
-	// ft_putendl("in piece_down");
-	y = play->plateau->y;
+	y = play->plateau->y - HEIGHT;
 	// ft_putendlnbr("play->plateau->y", play->plateau->y);
-	while((--y - play->piece->y) >= 0)
+	while(--y >= 0)
 	{
 		// ft_putendl("in while");
 		x = -1;
-		while(BOARD[y][++x + play->piece->x])
+		while(BOARD[y][++x + WIDTH])
 		{
 			// ft_putendl("in x while");
 			if (can_place(play, x, y))
