@@ -14,9 +14,15 @@
 
 #define BOARD play->plateau->board
 #define PIECE play->piece->piece
+#define TOP play->piece->terr->top
+#define BOTTOM play->piece->terr->bottom
+#define LEFT play->piece->terr->left
+#define RIGHT play->piece->terr->right
 #define ENEMY play->enemy
 #define ME play->territory
 #define DIR play->dir
+#define WIDTH (RIGHT->x + 1) - LEFT->x
+#define HEIGHT (BOTTOM->y + 1) - TOP->y
 
 t_bool				can_place(t_play *play, int x, int y)
 {
@@ -24,40 +30,23 @@ t_bool				can_place(t_play *play, int x, int y)
 	int				py;
 	int				count;
 
-	py = -1;
+	py = TOP->y - 1;
 	count = 0;
 	// ft_putendl("in can place");
 	while(PIECE[++py])
 	{
 		// ft_putendl("in can while y");
-		px = -1;
+		px = LEFT->x - 1;
 		while(PIECE[py][++px])
 		{
-			// ft_putendl("in can while x");
-			// ft_putendlnbr("py", py);
-			// ft_putendlnbr("px", px);
-			// ft_putendlnbr("y", y);
-			// ft_putendlnbr("x", x);
-			// ft_putstr("piece is ");
-			// ft_putchar(PIECE[py][px]);
-			// ft_putchar('\n');
-			// ft_putstr("board is ");
-			// ft_putchar(BOARD[y + py][x + px]);
-			// ft_putchar('\n');
-			// ft_putnbr(x);
-			// ft_putendlnbr(" ", y);
-			// // ft_putchar('\n');
-			// if (PIECE[py][px] == '*' && (BOARD[y + py][x + px] == play->symbol
-			// 	|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
-			// 	ft_putendl("YES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			if (PIECE[py][px] == '*' && (y + py) < play->plateau->y
-				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
+			if (PIECE[py][px] == '*' && (y + HEIGHT) < play->plateau->y
+				&& (x + WIDTH) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
 				count++;
 			// if (BOARD[y + py][x + px] == play->e_symbol || BOARD[y + py][x + px] == ft_toupper(play->e_symbol))
 			// 	ft_putendl("yooooooooooooooooo");
-			if (PIECE[py][px] == '*' && (y + py) < play->plateau->y
-				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
+			if (PIECE[py][px] == '*' && (y + HEIGHT) < play->plateau->y
+				&& (x + WIDTH) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
 			{
 				// ft_putendl("e_symbol in way");
@@ -190,7 +179,9 @@ int					place_piece(t_play *play)
 			return ft_printf("%d %d\n", play->y, play->x);
 	}
 	else
+	{
+		ft_putendl("we here");
 		place_anywhere(play);
-		// ft_putendl("we here");
+	}
 	return -1;
 }
