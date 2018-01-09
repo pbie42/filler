@@ -13,11 +13,14 @@
 #include "filler.h"
 
 #define PIECE play->piece->piece
+#define REAL play->piece->real
 #define TERR play->piece->terr
 #define TOP play->piece->terr->top
 #define BOTTOM play->piece->terr->bottom
 #define LEFT play->piece->terr->left
 #define RIGHT play->piece->terr->right
+#define HEIGHT (BOTTOM->y + 1) - TOP->y
+#define WIDTH (RIGHT->x + 1) - LEFT->x
 
 void					find_piece_top(t_play *play)
 {
@@ -74,6 +77,8 @@ void					find_piece_left(t_play *play)
 		while(PIECE[++y])
 			if (PIECE[y][x] == '*')
 			{
+				// ft_putendlnbr("x in piece left ", x);
+				// ft_putendlnbr("y in piece left ", y);
 				LEFT->x = x;
 				LEFT->y = y;
 				return ;
@@ -100,6 +105,33 @@ void					find_piece_right(t_play *play)
 	}
 }
 
+void					malloc_real(t_play * play)
+{
+	int					x;
+	int					y;
+	int					left;
+	int					top;
+
+	y = 0;
+	top = TOP->y;
+	while (top <= BOTTOM->y)
+	{
+		x = 0;
+		left = LEFT->x;
+		if (!(REAL[y] = (char *)malloc(sizeof(char) * WIDTH + 1)))
+			ft_exit("Could not allocate line of real piece");
+		while (left <= RIGHT->x)
+		{
+			REAL[y][x] = PIECE[top][left];
+			left++;
+			x++;
+		}
+		top++;
+		y++;
+	}
+	REAL[y] = NULL;
+}
+
 void					find_piece(t_play *play)
 {
 	if (!(TERR = (t_territory *)malloc(sizeof(t_territory) * 1)))
@@ -121,14 +153,38 @@ void					find_piece(t_play *play)
 	LEFT->y = 0;
 	RIGHT->x = 0;
 	RIGHT->y = 0;
-	// ft_putendl("before find piece!");
+	// ft_putendl("about to find piece");
 	find_piece_top(play);
 	// ft_putendl("after top");
 	find_piece_bottom(play);
 	// ft_putendl("after bottom");
 	find_piece_left(play);
 	// ft_putendl("after left");
+	// ft_putendlnbr("play->piece->terr->left->x", LEFT->x);
+	// ft_putendlnbr("play->piece->terr->left->y", LEFT->y);
+	// ft_putendl("before right");
 	find_piece_right(play);
+	// ft_putendl("about to malloc");
+	if (!(REAL = (char **)malloc(sizeof(char *) * HEIGHT + 1)))
+		ft_exit("Could not allocate real piece");
+	// ft_putendl("before malloc_real");
+	malloc_real(play);
+	// ft_putendl("malloced real homie!");
+	// int				x;
+	// int				y;
+
+	// y = 0;
+	// while (REAL[y])
+	// {
+	// 	x = 0;
+	// 	while (REAL[y][x])
+	// 	{
+	// 		ft_putchar(REAL[y][x]);
+	// 		x++;
+	// 	}
+	// 	ft_putchar('\n');
+	// 	y++;
+	// }
 	// ft_putendl("after right");
 	// ft_putendl("found all of PIECE!!");
 	// ft_putendlnbr("play->piece->terr->bottom->x", BOTTOM->x);

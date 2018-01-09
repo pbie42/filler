@@ -93,7 +93,7 @@ typedef struct		s_piece
 	int				x;
 	int				y;
 	t_territory		*terr;
-	// char				**real;
+	char				**real;
 	char				**piece;
 }					t_piece;
 
