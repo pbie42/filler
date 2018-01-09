@@ -14,6 +14,7 @@
 
 #define BOARD play->plateau->board
 #define PIECE play->piece->piece
+#define REAL play->piece->real
 #define TOP play->piece->terr->top
 #define BOTTOM play->piece->terr->bottom
 #define LEFT play->piece->terr->left
@@ -30,15 +31,15 @@ t_bool				can_place(t_play *play, int x, int y)
 	int				py;
 	int				count;
 
-	py = TOP->y - 1;
+	py = -1;
 	count = 0;
 	// if (x == 5 && y == 13)
 	// 	ft_putendl("in can place");
-	while(PIECE[++py])
+	while(REAL[++py])
 	{
 		// ft_putendl("in can while y");
-		px = LEFT->x - 1;
-		while(PIECE[py][++px])
+		px = -1;
+		while(REAL[py][++px])
 		{
 			// if (x == 5 && y == 13)
 			// {
@@ -46,20 +47,20 @@ t_bool				can_place(t_play *play, int x, int y)
 			// 	ft_putendlnbr("px ", px);
 			// 	ft_putendlnbr("y + py ", y + py);
 			// 	ft_putendlnbr("x + px ", x + px);
-			// 	ft_putstr("PIECE[py][px] ");
-			// 	ft_putchar(PIECE[py][px]);
+			// 	ft_putstr("REAL[py][px] ");
+			// 	ft_putchar(REAL[py][px]);
 			// 	ft_putchar('\n');
 			// 	ft_putstr("BOARD[y + py][x + px] ");
 			// 	ft_putchar(BOARD[y + py][x + px]);
 			// 	ft_putchar('\n');
 			// }
-			if (PIECE[py][px] == '*' && (y + py) <= play->plateau->y
+			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
 				count++;
 			// if (BOARD[y + py][x + px] == play->e_symbol || BOARD[y + py][x + px] == ft_toupper(play->e_symbol))
 			// 	ft_putendl("yooooooooooooooooo");
-			if (PIECE[py][px] == '*' && (y + py) <= play->plateau->y
+			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
 			{
@@ -72,9 +73,11 @@ t_bool				can_place(t_play *play, int x, int y)
 	{
 		// ft_putendl("count is fine");
 		// ft_putendlnbr("x is ", x);
+		// ft_putendlnbr("LEFT->x ", LEFT->x);
 		// ft_putendlnbr("y is ", y);
-		play->x = x;
-		play->y = y;
+		// ft_putendlnbr("TOP->y ", TOP->y);
+		play->x = x - LEFT->x;
+		play->y = y - TOP->y;
 		return (TRUE);
 	}
 	else
@@ -138,6 +141,7 @@ void					place_anywhere(t_play * play)
 			// 	ft_putendl("WHERE WE SHOULD BE!!!!!");
 			if (can_place(play, x, y))
 			{
+				// ft_putendl("can place it");
 				if (x >= 0 && x <= play->plateau->x
 					&& y >= 0 && y <= play->plateau->y)
 				{
