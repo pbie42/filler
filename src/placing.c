@@ -122,6 +122,7 @@ void					place_anywhere(t_play * play)
 	int				x;
 	int				y;
 
+	// ft_putendl("in place anywhere");
 	y = play->plateau->y - HEIGHT;
 	while (y >= 0)
 	{
@@ -152,33 +153,31 @@ void					place_anywhere(t_play * play)
 
 int					place_piece(t_play *play)
 {
+	int				x;
+
+	x = 0;
 	find_direction(play);
 	if (DIR->down && DIR->right)
 	{
 		// ft_putendl("down right");
-		// piece_down(play);
-		// piece_right(play);
-		return piece_down_right(play);
+		if ((x = piece_down_right(play)) != -1)
+			return (x);
 	}
 	else if (DIR->down && DIR->left)
 	{
 		// ft_putendl("down left");
-		// piece_down(play);
-		// piece_left(play);
-		return piece_down_left(play);
+		if ((x = piece_down_left(play)) != -1)
+		return (x);
 	}
 	else if (DIR->up && DIR->right)
 	{
 		// ft_putendl("up right");
-		// piece_up(play);
-		// piece_right(play);
-		return piece_up_right(play);
+		if ((x = piece_up_right(play)) != -1)
+			return (x);
 	}
 	else if (DIR->up && DIR->left)
 	{
 		// ft_putendl("up left");
-		// piece_up(play);
-		// piece_left(play);
 		return piece_up_left(play);
 	}
 	else if (DIR->up)
