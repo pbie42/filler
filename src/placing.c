@@ -130,7 +130,7 @@ void					place_anywhere(t_play * play)
 	while (y >= 0)
 	{
 		x = -1;
-		while (BOARD[y][++x + WIDTH])
+		while (BOARD[y][++x + WIDTH - 1])
 		{
 			// // ft_putendl("y");
 			// ft_putendlnbr("x ", x);
