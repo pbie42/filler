@@ -112,11 +112,16 @@ typedef struct		s_play
 	t_territory		*territory;
 	t_territory		*enemy;
 	t_direction		*dir;
+	t_direction		*r_dir;
 	char				symbol;
 	char				e_symbol;
 	int				player;
 	int				x;
 	int				y;
+	int				e_x;
+	int				e_y;
+	int				s_x;
+	int				s_y;
 }					t_play;
 
 void				parse_turn(t_play *play, int *part);

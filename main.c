@@ -20,6 +20,8 @@ void				setup_turn(t_play *play, int *part)
 		ft_exit("Could not allocate piece");
 	if (!(play->dir = (t_direction *)malloc(sizeof(t_direction) * 1)))
 		ft_exit("Could not allocate direction");
+	if (!(play->r_dir = (t_direction *)malloc(sizeof(t_direction) * 1)))
+		ft_exit("Could not allocate direction");
 	play->player = 0;
 	play->plateau->x = 0;
 	play->plateau->y = 0;
@@ -29,6 +31,10 @@ void				setup_turn(t_play *play, int *part)
 	play->dir->down = FALSE;
 	play->dir->left = FALSE;
 	play->dir->right = FALSE;
+	play->r_dir->up = FALSE;
+	play->r_dir->down = FALSE;
+	play->r_dir->left = FALSE;
+	play->r_dir->right = FALSE;
 	play->x = 0;
 	play->y = 0;
 	part[0] = 0;

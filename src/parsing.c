@@ -49,6 +49,7 @@ void				parse_piece(t_play *play, int *part, char **line)
 		// ft_putstr("e_symbol is ");
 		// ft_putchar(play->e_symbol);
 		// ft_putchar('\n');
+		// ft_putendl("about to do place piece");
 		place_piece(play);
 		setup_turn(play, part);
 	}
@@ -95,13 +96,10 @@ void				parse_turn(t_play *play, int *part)
 	char			*str;
 	char			**line;
 	int			i;
-	FILE * fp;
 
 	i = 0;
-	fp = fopen ("file.txt", "a");
 	while (ft_get_next_line(0, &str) > 0)
 	{
-		fprintf(fp, "\n%s", str);
 		line = ft_strsplit(str, ' ');
 		// ft_putstr("line[0] is ");
 		// ft_putendl(line[0]);

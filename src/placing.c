@@ -33,27 +33,15 @@ t_bool				can_place(t_play *play, int x, int y)
 
 	py = -1;
 	count = 0;
-	// if (x == 5 && y == 13)
-	// 	ft_putendl("in can place");
+	// ft_putendlnbr("x ", x);
+	// ft_putendlnbr("y ", y);
+	// ft_putchar('\n');
 	while(REAL[++py])
 	{
 		// ft_putendl("in can while y");
 		px = -1;
 		while(REAL[py][++px])
 		{
-			// if (x == 5 && y == 13)
-			// {
-			// 	ft_putendlnbr("py ", py);
-			// 	ft_putendlnbr("px ", px);
-			// 	ft_putendlnbr("y + py ", y + py);
-			// 	ft_putendlnbr("x + px ", x + px);
-			// 	ft_putstr("REAL[py][px] ");
-			// 	ft_putchar(REAL[py][px]);
-			// 	ft_putchar('\n');
-			// 	ft_putstr("BOARD[y + py][x + px] ");
-			// 	ft_putchar(BOARD[y + py][x + px]);
-			// 	ft_putchar('\n');
-			// }
 			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
@@ -90,33 +78,41 @@ t_bool				can_place(t_play *play, int x, int y)
 
 void					find_direction(t_play *play)
 {
-	// ft_putendlnbr("ENEMY->top->x ", ENEMY->top->x);
-	// ft_putendlnbr("ENEMY->bottom->x ", ENEMY->bottom->x);
-	// ft_putendlnbr("ME->top->x ", ME->top->x);
-	// ft_putendlnbr("ME->bottom->x ", ME->bottom->x);
 	if (ENEMY->top->y > ME->bottom->y || ENEMY->bottom->y > ME->bottom->y)
 	{
 		DIR->down = TRUE;
-		// ft_putendl("down is true");
 	}
 	if (ENEMY->bottom->y < ME->top->y || ENEMY->top->y < ME->top->y)
 	{
 		DIR->up = TRUE;
-		// ft_putendl("up is true");
 	}
-	// ft_putendlnbr("ENEMY->right->x ", ENEMY->right->x);
-	// ft_putendlnbr("ENEMY->left->x ", ENEMY->left->x);
-	// ft_putendlnbr("ME->right->x ", ME->right->x);
-	// ft_putendlnbr("ME->left->x ", ME->left->x);
 	if (ENEMY->right->x < ME->left->x || ENEMY->left->x < ME->left->x)
 	{
 		DIR->left = TRUE;
-		// ft_putendl("left is true");
 	}
 	if (ENEMY->left->x > ME->right->x || ENEMY->right->x > ME->right->x)
 	{
 		DIR->right = TRUE;
-		// ft_putendl("right is true");
+	}
+}
+
+void					find_og_direction(t_play *play)
+{
+	if (play->e_y > play->s_y)
+	{
+		play->r_dir->down = TRUE;
+	}
+	if (play->e_y < play->s_y)
+	{
+		play->r_dir->up = TRUE;
+	}
+	if (play->e_x < play->s_x)
+	{
+		play->r_dir->left = TRUE;
+	}
+	if (play->e_x > play->s_x)
+	{
+		play->r_dir->right = TRUE;
 	}
 }
 
@@ -152,7 +148,7 @@ void					place_anywhere(t_play * play)
 		}
 		y--;
 	}
-	// ft_putendl("can't place anywhere");
+	ft_putendl("0 0\n");
 }
 
 int					place_piece(t_play *play)
@@ -161,6 +157,11 @@ int					place_piece(t_play *play)
 
 	x = 0;
 	find_direction(play);
+	find_og_direction(play);
+	// ft_putendlnbr("DIR->right ", DIR->right);
+	// ft_putendlnbr("DIR->left ", DIR->left);
+	// ft_putendlnbr("DIR->down ", DIR->down);
+	// ft_putendlnbr("DIR->up ", DIR->up);
 	if (DIR->down && DIR->right)
 	{
 		// ft_putendl("down right");

@@ -100,6 +100,11 @@ void					enemy_right(t_play *play)
 
 void					find_enemy(t_play *play)
 {
+	static int	x;
+	static int	y;
+
+	x = 0;
+	y = 0;
 	if (!(play->enemy = (t_territory *)malloc(sizeof(t_territory) * 1)))
 		ft_exit("Could not allocate enemy");
 	if (!(play->enemy->top = (t_coords *)malloc(sizeof(t_coords) * 1)))
@@ -120,6 +125,12 @@ void					find_enemy(t_play *play)
 	play->enemy->left->y = 0;
 	play->enemy->right->x = 0;
 	play->enemy->right->y = 0;
+	if (!x)
+		x = play->enemy->top->x;
+	if (!y)
+		y = play->enemy->top->y;
+	play->e_x = x;
+	play->e_y = y;
 	if (play->symbol == 'o')
 		play->e_symbol = 'x';
 	else
