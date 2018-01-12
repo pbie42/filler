@@ -24,6 +24,10 @@
 #define DIR play->dir
 #define WIDTH (RIGHT->x + 1) - LEFT->x
 #define HEIGHT (BOTTOM->y + 1) - TOP->y
+#define TOPDIFF (ME->top->y - ENEMY->top->y)
+#define BOTTOMDIFF (ENEMY->bottom->y - ME->bottom->y)
+#define RIGHTDIFF (ENEMY->right->x - ME->right->x)
+#define LEFTDIFF (ME->left->x - ENEMY->left->x)
 
 t_bool				can_place(t_play *play, int x, int y)
 {
@@ -159,59 +163,16 @@ void					place_anywhere(t_play * play)
 
 int					place_piece(t_play *play)
 {
-	int				x;
-
-	x = 0;
 	find_direction(play);
-	if (DIR->down && DIR->right)
-	{
-		// ft_putendl("down right");
-		if ((x = piece_down_right(play)) != -1)
-			return (x);
-	}
-	else if (DIR->down && DIR->left)
-	{
-		// ft_putendl("down left");
-		if ((x = piece_down_left(play)) != -1)
-		return (x);
-	}
-	else if (DIR->up && DIR->right)
-	{
-		// ft_putendl("up right");
-		if ((x = piece_up_right(play)) != -1)
-			return (x);
-	}
-	else if (DIR->up && DIR->left)
-	{
-		// ft_putendl("up left");
-		if ((x = piece_up_left(play)) != -1)
-			return (x);
-	}
-	else if (DIR->up)
-	{
-		// ft_putendl("up");
-		if (piece_up(play))
-			return ft_printf("%d %d\n", play->y, play->x);
-	}
-	else if (DIR->down)
-	{
-		// ft_putendl("down");
-		if (piece_down(play))
-			return ft_printf("%d %d\n", play->y, play->x);
-	}
-	else if (DIR->left)
-	{
-		// ft_putendl("left");
-		if (piece_left(play))
-			return ft_printf("%d %d\n", play->y, play->x);
-	}
-	else if (DIR->right)
-	{
-		// ft_putendl("right");
-		if (piece_right(play))
-			return ft_printf("%d %d\n", play->y, play->x);
-	}
-	// ft_putendl("we here");
-	place_anywhere(play);
+	if (DIR->up && TOPDIFF > BOTTOMDIFF)
+		up_priority(play);
+	else if (DIR->down && BOTTOMDIFF > TOPDIFF)
+		down_priority(play);
+	else if (DIR->right && RIGHTDIFF > LEFTDIFF)
+		right_priority(play);
+	else if (DIR->left && LEFTDIFF > RIGHTDIFF)
+		left_priority(play);
+	else
+		down_priority(play);
 	return -1;
 }

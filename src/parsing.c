@@ -95,13 +95,10 @@ void				parse_turn(t_play *play, int *part)
 	char			*str;
 	char			**line;
 	int			i;
-	FILE * fp;
 
 	i = 0;
-	fp = fopen ("file.txt", "a");
 	while (ft_get_next_line(0, &str) > 0)
 	{
-		fprintf(fp, "\n%s", str);
 		line = ft_strsplit(str, ' ');
 		// ft_putstr("line[0] is ");
 		// ft_putendl(line[0]);

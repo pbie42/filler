@@ -20,6 +20,7 @@ SRC = main.c \
 		src/enemy.c \
 		src/ft_strhas.c \
 		src/parsing.c \
+		src/path.c \
 		src/piece.c \
 		src/placing.c \
 		src/straight.c \

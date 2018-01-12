@@ -136,5 +136,10 @@ int				compare_coords(t_play *play, int x, int y, char *str);
 int				ft_strhas(const char *s1, const char *s2);
 void				setup_turn(t_play *play, int *part);
 void				find_piece(t_play *play);
+int				down_priority(t_play *play);
+int				up_priority(t_play *play);
+int				left_priority(t_play *play);
+int				right_priority(t_play *play);
+void					place_anywhere(t_play * play);
 
 #endif
