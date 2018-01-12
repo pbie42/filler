@@ -24,10 +24,10 @@ void					enemy_top(t_play *play)
 	int				y;
 
 	y = -1;
-	while(BOARD[++y])
+	while (BOARD[++y])
 	{
 		x = -1;
-		while(BOARD[y][++x])
+		while (BOARD[y][++x])
 			if (BOARD[y][x] == play->e_symbol
 				|| BOARD[y][x] == ft_toupper(play->e_symbol))
 			{
@@ -44,10 +44,10 @@ void					enemy_bottom(t_play *play)
 	int				y;
 
 	y = play->plateau->y;
-	while(--y >= 0)
+	while (--y >= 0)
 	{
 		x = -1;
-		while(BOARD[y][++x])
+		while (BOARD[y][++x])
 			if (BOARD[y][x] == play->e_symbol
 				|| BOARD[y][x] == ft_toupper(play->e_symbol))
 			{
@@ -64,10 +64,10 @@ void					enemy_left(t_play *play)
 	int				y;
 
 	x = -1;
-	while(++x <= play->plateau->x)
+	while (++x <= play->plateau->x)
 	{
 		y = -1;
-		while(BOARD[++y])
+		while (BOARD[++y])
 			if (BOARD[y][x] == play->e_symbol
 				|| BOARD[y][x] == ft_toupper(play->e_symbol))
 			{
@@ -84,10 +84,10 @@ void					enemy_right(t_play *play)
 	int				y;
 
 	x = play->plateau->x;
-	while(--x >= 0)
+	while (--x >= 0)
 	{
 		y = -1;
-		while(BOARD[++y])
+		while (BOARD[++y])
 			if (BOARD[y][x] == play->e_symbol
 				|| BOARD[y][x] == ft_toupper(play->e_symbol))
 			{
@@ -110,18 +110,7 @@ void					find_enemy(t_play *play)
 		ft_exit("Could not allocate left");
 	if (!(play->enemy->right = (t_coords *)malloc(sizeof(t_coords) * 1)))
 		ft_exit("Could not allocate right");
-	play->enemy->top->x = 0;
-	play->enemy->top->y = 0;
-	play->enemy->bottom->x = 0;
-	play->enemy->bottom->y = 0;
-	play->enemy->left->x = 0;
-	play->enemy->left->y = 0;
-	play->enemy->right->x = 0;
-	play->enemy->right->y = 0;
-	if (play->symbol == 'o')
-		play->e_symbol = 'x';
-	else
-		play->e_symbol = 'o';
+	enemy_setup(play);
 	enemy_top(play);
 	enemy_bottom(play);
 	enemy_left(play);

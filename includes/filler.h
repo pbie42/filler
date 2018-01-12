@@ -141,5 +141,6 @@ int				up_priority(t_play *play);
 int				left_priority(t_play *play);
 int				right_priority(t_play *play);
 void					place_anywhere(t_play * play);
+void				enemy_setup(t_play *play);
 
 #endif

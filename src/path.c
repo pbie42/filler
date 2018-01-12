@@ -48,16 +48,16 @@ int					down_priority(t_play *play)
 			return (x);
 	if (DIR->up)
 		if (piece_up(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->down)
 		if (piece_down(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->left)
 		if (piece_left(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->right)
 		if (piece_right(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	place_anywhere(play);
 	return (-1);
 }
@@ -81,16 +81,16 @@ int					up_priority(t_play *play)
 			return (x);
 	if (DIR->up)
 		if (piece_up(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->down)
 		if (piece_down(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->left)
 		if (piece_left(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->right)
 		if (piece_right(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	place_anywhere(play);
 	return (-1);
 }
@@ -114,16 +114,16 @@ int					left_priority(t_play *play)
 			return (x);
 	if (DIR->up)
 		if (piece_up(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->down)
 		if (piece_down(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->left)
 		if (piece_left(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->right)
 		if (piece_right(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	place_anywhere(play);
 	return (-1);
 }

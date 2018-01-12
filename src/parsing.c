@@ -20,7 +20,7 @@ void				put_board(t_play *play)
 	int			y;
 
 	y = -1;
-	while(BOARD[++y])
+	while (BOARD[++y])
 		ft_putendl(BOARD[y]);
 }
 

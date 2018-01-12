@@ -37,17 +37,19 @@ t_bool				can_place(t_play *play, int x, int y)
 
 	py = -1;
 	count = 0;
-	while(REAL[++py])
+	while (REAL[++py])
 	{
 		px = -1;
-		while(REAL[py][++px])
+		while (REAL[py][++px])
 		{
 			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
-				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
+				&& (x + px) < play->plateau->x
+				&& (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
 				count++;
 			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
-				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
+				&& (x + px) < play->plateau->x
+				&& (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
 				return (FALSE);
 		}
@@ -74,7 +76,7 @@ void					find_direction(t_play *play)
 		DIR->right = TRUE;
 }
 
-void					place_anywhere(t_play * play)
+void					place_anywhere(t_play *play)
 {
 	int				x;
 	int				y;
@@ -100,6 +102,8 @@ void					place_anywhere(t_play * play)
 	ft_putendl("0 0");
 }
 
+
+
 int					place_piece(t_play *play)
 {
 	find_direction(play);
@@ -112,6 +116,6 @@ int					place_piece(t_play *play)
 	else if (DIR->left && LEFTDIFF > RIGHTDIFF)
 		left_priority(play);
 	else
-		down_priority(play);
-	return -1;
+		up_priority(play);
+	return (-1);
 }

@@ -31,7 +31,7 @@ void					find_piece_top(t_play *play)
 	while (PIECE[++y])
 	{
 		x = -1;
-		while(PIECE[y][++x])
+		while (PIECE[y][++x])
 		{
 			if (PIECE[y][x] == '*')
 			{
@@ -49,10 +49,10 @@ void					find_piece_bottom(t_play *play)
 	int				y;
 
 	y = play->piece->y;
-	while(--y >= 0)
+	while (--y >= 0)
 	{
 		x = -1;
-		while(PIECE[y][++x])
+		while (PIECE[y][++x])
 			if (PIECE[y][x] == '*')
 			{
 				BOTTOM->x = x;
@@ -68,10 +68,10 @@ void					find_piece_left(t_play *play)
 	int				y;
 
 	x = -1;
-	while(++x <= play->piece->x)
+	while (++x <= play->piece->x)
 	{
 		y = -1;
-		while(PIECE[++y])
+		while (PIECE[++y])
 			if (PIECE[y][x] == '*')
 			{
 				LEFT->x = x;
@@ -87,10 +87,10 @@ void					find_piece_right(t_play *play)
 	int				y;
 
 	x = play->piece->x;
-	while(--x >= 0)
+	while (--x >= 0)
 	{
 		y = -1;
-		while(PIECE[++y])
+		while (PIECE[++y])
 			if (PIECE[y][x] == '*')
 			{
 				RIGHT->x = x;
@@ -100,7 +100,7 @@ void					find_piece_right(t_play *play)
 	}
 }
 
-void					malloc_real(t_play * play)
+void					malloc_real(t_play *play)
 {
 	int					x;
 	int					y;

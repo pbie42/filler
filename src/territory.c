@@ -24,10 +24,10 @@ void					find_top(t_play *play)
 	int				y;
 
 	y = -1;
-	while(BOARD[++y])
+	while (BOARD[++y])
 	{
 		x = -1;
-		while(BOARD[y][++x])
+		while (BOARD[y][++x])
 			if (BOARD[y][x] == play->symbol
 				|| BOARD[y][x] == ft_toupper(play->symbol))
 			{
@@ -44,10 +44,10 @@ void					find_bottom(t_play *play)
 	int				y;
 
 	y = play->plateau->y;
-	while(--y >= 0)
+	while (--y >= 0)
 	{
 		x = -1;
-		while(BOARD[y][++x])
+		while (BOARD[y][++x])
 			if (BOARD[y][x] == play->symbol
 				|| BOARD[y][x] == ft_toupper(play->symbol))
 			{
@@ -64,10 +64,10 @@ void					find_left(t_play *play)
 	int				y;
 
 	x = -1;
-	while(++x <= play->plateau->x)
+	while (++x <= play->plateau->x)
 	{
 		y = -1;
-		while(BOARD[++y])
+		while (BOARD[++y])
 			if (BOARD[y][x] == play->symbol
 				|| BOARD[y][x] == ft_toupper(play->symbol))
 			{
@@ -84,10 +84,10 @@ void					find_right(t_play *play)
 	int				y;
 
 	x = play->plateau->x;
-	while(--x >= 0)
+	while (--x >= 0)
 	{
 		y = -1;
-		while(BOARD[++y])
+		while (BOARD[++y])
 			if (BOARD[y][x] == play->symbol
 				|| BOARD[y][x] == ft_toupper(play->symbol))
 			{

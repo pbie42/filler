@@ -26,10 +26,10 @@ t_bool					piece_right(t_play *play)
 	int				y;
 
 	x = play->plateau->x - WIDTH;
-	while(--x >= 0)
+	while (--x >= 0)
 	{
 		y = -1;
-		while(BOARD[++y + HEIGHT])
+		while (BOARD[++y + HEIGHT])
 			if (can_place(play, x, y))
 				return (TRUE);
 	}
@@ -42,10 +42,10 @@ t_bool					piece_left(t_play *play)
 	int				y;
 
 	x = -1;
-	while((++x + WIDTH) <= play->plateau->x)
+	while ((++x + WIDTH) <= play->plateau->x)
 	{
 		y = -1;
-		while(BOARD[++y + HEIGHT])
+		while (BOARD[++y + HEIGHT])
 			if (can_place(play, x, y))
 				return (TRUE);
 	}
@@ -58,10 +58,10 @@ t_bool					piece_up(t_play *play)
 	int				y;
 
 	y = -1;
-	while(BOARD[++y + HEIGHT])
+	while (BOARD[++y + HEIGHT])
 	{
 		x = -1;
-		while(BOARD[y][++x + WIDTH])
+		while (BOARD[y][++x + WIDTH])
 			if (can_place(play, x, y))
 				return (TRUE);
 	}
@@ -74,10 +74,10 @@ t_bool					piece_down(t_play *play)
 	int				y;
 
 	y = play->plateau->y - HEIGHT;
-	while(--y >= 0)
+	while (--y >= 0)
 	{
 		x = -1;
-		while(BOARD[y][++x + WIDTH])
+		while (BOARD[y][++x + WIDTH])
 			if (can_place(play, x, y))
 				return (TRUE);
 	}
