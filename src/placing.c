@@ -37,93 +37,41 @@ t_bool				can_place(t_play *play, int x, int y)
 
 	py = -1;
 	count = 0;
-	// if (x == 5 && y == 13)
-	// 	ft_putendl("in can place");
 	while(REAL[++py])
 	{
-		// ft_putendl("in can while y");
 		px = -1;
 		while(REAL[py][++px])
 		{
-			// if (x == 5 && y == 13)
-			// {
-			// 	ft_putendlnbr("py ", py);
-			// 	ft_putendlnbr("px ", px);
-			// 	ft_putendlnbr("y + py ", y + py);
-			// 	ft_putendlnbr("x + px ", x + px);
-			// 	ft_putstr("REAL[py][px] ");
-			// 	ft_putchar(REAL[py][px]);
-			// 	ft_putchar('\n');
-			// 	ft_putstr("BOARD[y + py][x + px] ");
-			// 	ft_putchar(BOARD[y + py][x + px]);
-			// 	ft_putchar('\n');
-			// }
 			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->symbol)))
 				count++;
-			// if (BOARD[y + py][x + px] == play->e_symbol || BOARD[y + py][x + px] == ft_toupper(play->e_symbol))
-			// 	ft_putendl("yooooooooooooooooo");
 			if (REAL[py][px] == '*' && (y + py) <= play->plateau->y
 				&& (x + px) < play->plateau->x && (BOARD[y + py][x + px] == play->e_symbol
 				|| BOARD[y + py][x + px] == ft_toupper(play->e_symbol)))
-			{
-				// ft_putendl("e_symbol in way");
 				return (FALSE);
-			}
 		}
 	}
 	if (count == 1)
 	{
-		// ft_putendl("count is fine");
-		// ft_putendlnbr("x is ", x);
-		// ft_putendlnbr("LEFT->x ", LEFT->x);
-		// ft_putendlnbr("y is ", y);
-		// ft_putendlnbr("TOP->y ", TOP->y);
 		play->x = x - LEFT->x;
 		play->y = y - TOP->y;
-		// ft_putendlnbr("play->x ", play->x);
-		// ft_putendlnbr("play->y ", play->y);
 		return (TRUE);
 	}
 	else
-	{
-		// ft_putendlnbr("count is ", count);
-		// ft_putendl("count is off");
 		return (FALSE);
-	}
 }
 
 void					find_direction(t_play *play)
 {
-	// ft_putendlnbr("ENEMY->top->x ", ENEMY->top->x);
-	// ft_putendlnbr("ENEMY->bottom->x ", ENEMY->bottom->x);
-	// ft_putendlnbr("ME->top->x ", ME->top->x);
-	// ft_putendlnbr("ME->bottom->x ", ME->bottom->x);
 	if (ENEMY->top->y > ME->bottom->y || ENEMY->bottom->y > ME->bottom->y)
-	{
 		DIR->down = TRUE;
-		// ft_putendl("down is true");
-	}
 	if (ENEMY->bottom->y < ME->top->y || ENEMY->top->y < ME->top->y)
-	{
 		DIR->up = TRUE;
-		// ft_putendl("up is true");
-	}
-	// ft_putendlnbr("ENEMY->right->x ", ENEMY->right->x);
-	// ft_putendlnbr("ENEMY->left->x ", ENEMY->left->x);
-	// ft_putendlnbr("ME->right->x ", ME->right->x);
-	// ft_putendlnbr("ME->left->x ", ME->left->x);
 	if (ENEMY->right->x < ME->left->x || ENEMY->left->x < ME->left->x)
-	{
 		DIR->left = TRUE;
-		// ft_putendl("left is true");
-	}
 	if (ENEMY->left->x > ME->right->x || ENEMY->right->x > ME->right->x)
-	{
 		DIR->right = TRUE;
-		// ft_putendl("right is true");
-	}
 }
 
 void					place_anywhere(t_play * play)
@@ -131,23 +79,14 @@ void					place_anywhere(t_play * play)
 	int				x;
 	int				y;
 
-	// ft_putendl("in place anywhere");
 	y = play->plateau->y - HEIGHT;
 	while (y >= 0)
 	{
 		x = -1;
 		while (BOARD[y][++x + WIDTH - 1])
 		{
-			// // ft_putendl("y");
-			// ft_putendlnbr("x ", x);
-			// // ft_putendlnbr("y ", y);
-			// ft_putendlnbr("y ", y);
-			// ft_putchar('\n');
-			// if (x == 5 && y == 13)
-			// 	ft_putendl("WHERE WE SHOULD BE!!!!!");
 			if (can_place(play, x, y))
 			{
-				// ft_putendl("can place it");
 				if (x >= 0 && x <= play->plateau->x
 					&& y >= 0 && y <= play->plateau->y)
 				{

@@ -110,10 +110,8 @@ void					find_territory(t_play *play)
 		ft_exit("Could not allocate left");
 	if (!(play->territory->right = (t_coords *)malloc(sizeof(t_coords) * 1)))
 		ft_exit("Could not allocate right");
-	// ft_putendl("before territory");
 	play->territory->top->x = 0;
 	play->territory->top->y = 0;
-	// ft_putendl("after top");
 	play->territory->bottom->x = 0;
 	play->territory->bottom->y = 0;
 	play->territory->left->x = 0;
@@ -124,13 +122,4 @@ void					find_territory(t_play *play)
 	find_bottom(play);
 	find_left(play);
 	find_right(play);
-	// ft_putendl("found it all");
-	// ft_putendlnbr("play->territory->bottom->x", play->territory->bottom->x);
-	// ft_putendlnbr("play->territory->bottom->y", play->territory->bottom->y);
-	// ft_putendlnbr("play->territory->top->x", play->territory->top->x);
-	// ft_putendlnbr("play->territory->top->y", play->territory->top->y);
-	// ft_putendlnbr("play->territory->left->x", play->territory->left->x);
-	// ft_putendlnbr("play->territory->left->y", play->territory->left->y);
-	// ft_putendlnbr("play->territory->right->x", play->territory->right->x);
-	// ft_putendlnbr("play->territory->right->y", play->territory->right->y);
 }

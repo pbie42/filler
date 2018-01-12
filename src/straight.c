@@ -26,27 +26,13 @@ t_bool					piece_right(t_play *play)
 	int				y;
 
 	x = play->plateau->x - WIDTH;
-	// ft_putendlnbr("WIDTH ", WIDTH);
-	// ft_putendlnbr("HEIGHT ", HEIGHT);
 	while(--x >= 0)
 	{
 		y = -1;
-		// ft_putendl("x");
 		while(BOARD[++y + HEIGHT])
-		{
-			// ft_putendl("y");
-			// ft_putendlnbr("x ", x);
-			// ft_putendlnbr("y ", y);
-			// ft_putendlnbr("y + HEIGHT ", y + HEIGHT);
-			// ft_putchar('\n');
 			if (can_place(play, x, y))
-			{
-				// ft_putendl("can place on right!");
 				return (TRUE);
-			}
-		}
 	}
-	// ft_putendl("can NOT place on right!");
 	return (FALSE);
 }
 
@@ -60,15 +46,9 @@ t_bool					piece_left(t_play *play)
 	{
 		y = -1;
 		while(BOARD[++y + HEIGHT])
-		{
 			if (can_place(play, x, y))
-			{
-				// ft_putendl("can place on left!");
 				return (TRUE);
-			}
-		}
 	}
-	// ft_putendl("can NOT place on left!");
 	return (FALSE);
 }
 
@@ -83,12 +63,8 @@ t_bool					piece_up(t_play *play)
 		x = -1;
 		while(BOARD[y][++x + WIDTH])
 			if (can_place(play, x, y))
-			{
-				// ft_putendl("can place on top!");
 				return (TRUE);
-			}
 	}
-	// ft_putendl("can NOT place on top!");
 	return (FALSE);
 }
 
@@ -98,21 +74,12 @@ t_bool					piece_down(t_play *play)
 	int				y;
 
 	y = play->plateau->y - HEIGHT;
-	// ft_putendlnbr("play->plateau->y", play->plateau->y);
 	while(--y >= 0)
 	{
-		// ft_putendl("in while");
 		x = -1;
 		while(BOARD[y][++x + WIDTH])
-		{
-			// ft_putendl("in x while");
 			if (can_place(play, x, y))
-			{
-				// ft_putendl("can place on bottom!");
 				return (TRUE);
-			}
-		}
 	}
-	// ft_putendl("can NOT place on bottom!");
 	return (FALSE);
 }

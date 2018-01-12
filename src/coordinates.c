@@ -94,7 +94,6 @@ int				ul_cmp(t_play *play, int x, int y)
 	int			top;
 	int			right;
 
-	// ft_putendl("in ul_cmp");
 	pc = (play->x * play->x) + (play->y * play->y);
 	xy = (x * x) + (y * y);
 	top = (ENEMY_T->x * ENEMY_T->x) + (ENEMY_T->y * ENEMY_T->y);
@@ -114,12 +113,6 @@ int				ul_cmp(t_play *play, int x, int y)
 
 int				compare_coords(t_play *play, int x, int y, char *str)
 {
-	// ft_putendl("in compare coords");
-	// ft_putendlnbr("play->x ", play->x);
-	// ft_putendlnbr("play->y ", play->y);
-	// ft_putendlnbr("x ", x);
-	// ft_putendlnbr("y ", y);
-
 	if (play->x == x && play->y == y)
 		return ft_printf("%d %d\n", y, x);
 	else if (ft_strcmp(str, "dr") == 0)

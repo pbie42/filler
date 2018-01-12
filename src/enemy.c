@@ -110,10 +110,8 @@ void					find_enemy(t_play *play)
 		ft_exit("Could not allocate left");
 	if (!(play->enemy->right = (t_coords *)malloc(sizeof(t_coords) * 1)))
 		ft_exit("Could not allocate right");
-	// ft_putendl("before enemy");
 	play->enemy->top->x = 0;
 	play->enemy->top->y = 0;
-	// ft_putendl("after top");
 	play->enemy->bottom->x = 0;
 	play->enemy->bottom->y = 0;
 	play->enemy->left->x = 0;
@@ -128,13 +126,4 @@ void					find_enemy(t_play *play)
 	enemy_bottom(play);
 	enemy_left(play);
 	enemy_right(play);
-	// ft_putendl("found it all");
-	// ft_putendlnbr("play->enemy->bottom->x", play->enemy->bottom->x);
-	// ft_putendlnbr("play->enemy->bottom->y", play->enemy->bottom->y);
-	// ft_putendlnbr("play->enemy->top->x", play->enemy->top->x);
-	// ft_putendlnbr("play->enemy->top->y", play->enemy->top->y);
-	// ft_putendlnbr("play->enemy->left->x", play->enemy->left->x);
-	// ft_putendlnbr("play->enemy->left->y", play->enemy->left->y);
-	// ft_putendlnbr("play->enemy->right->x", play->enemy->right->x);
-	// ft_putendlnbr("play->enemy->right->y", play->enemy->right->y);
 }

@@ -18,21 +18,11 @@ int				ft_strhas(const char *s1, const char *s2)
 	int			y;
 
 	x = -1;
-	// ft_putstr("s1 is ");
-	// ft_putendl(s1);
 	while (s1[++x])
 	{
 		y = 0;
 		while (s1[x + y] && s2[y] && s1[x + y] == s2[y])
-		{
-			// ft_putstr("s1[x + y] is ");
-			// ft_putchar(s1[x + y]);
-			// ft_putchar('\n');
-			// ft_putstr("s2[y] is ");
-			// ft_putchar(s2[y]);
-			// ft_putchar('\n');
 			y++;
-		}
 		if (s2[y] == '\0')
 			return (1);
 	}
