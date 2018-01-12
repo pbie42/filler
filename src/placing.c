@@ -78,6 +78,8 @@ t_bool				can_place(t_play *play, int x, int y)
 		// ft_putendlnbr("TOP->y ", TOP->y);
 		play->x = x - LEFT->x;
 		play->y = y - TOP->y;
+		// ft_putendlnbr("play->x ", play->x);
+		// ft_putendlnbr("play->y ", play->y);
 		return (TRUE);
 	}
 	else
@@ -152,7 +154,7 @@ void					place_anywhere(t_play * play)
 		}
 		y--;
 	}
-	// ft_putendl("can't place anywhere");
+	ft_putendl("0 0");
 }
 
 int					place_piece(t_play *play)
@@ -182,7 +184,8 @@ int					place_piece(t_play *play)
 	else if (DIR->up && DIR->left)
 	{
 		// ft_putendl("up left");
-		return piece_up_left(play);
+		if ((x = piece_up_left(play)) != -1)
+			return (x);
 	}
 	else if (DIR->up)
 	{

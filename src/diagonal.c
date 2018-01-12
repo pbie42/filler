@@ -55,9 +55,15 @@ int				piece_down_left(t_play *play)
 		down = TRUE;
 		x = play->x;
 		y = play->y;
+		// ft_putendlnbr("x after piece down ", x);
+		// ft_putendlnbr("y after piece down ", y);
 	}
 	if (piece_left(play))
+	{
 		left = TRUE;
+		// ft_putendlnbr("play->x after piece down ", play->x);
+		// ft_putendlnbr("play->y after piece down ", play->y);
+	}
 	if (down)
 	{
 		if (left)
@@ -115,10 +121,16 @@ int				piece_up_left(t_play *play)
 		up = TRUE;
 		x = play->x;
 		y = play->y;
+		// ft_putendlnbr("x after piece up ", x);
+		// ft_putendlnbr("y after piece up ", y);
 	}
 	// ft_putendl("after piece_down");
 	if (piece_left(play))
+	{
 		left = TRUE;
+		// ft_putendlnbr("play->x after piece left ", play->x);
+		// ft_putendlnbr("play->y after piece left ", play->y);
+	}
 	if (up)
 	{
 		if (left)
