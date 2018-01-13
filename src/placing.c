@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/23 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/23 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 15:49:05 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@
 #define BOTTOMDIFF (ENEMY->bottom->y - ME->bottom->y)
 #define RIGHTDIFF (ENEMY->right->x - ME->right->x)
 #define LEFTDIFF (ME->left->x - ENEMY->left->x)
+
+t_bool				can_place_bis(t_play *play, int x, int y, int count)
+{
+	if (count == 1)
+	{
+		play->x = x - LEFT->x;
+		play->y = y - TOP->y;
+		return (TRUE);
+	}
+	else
+		return (FALSE);
+}
 
 t_bool				can_place(t_play *play, int x, int y)
 {
@@ -54,17 +66,10 @@ t_bool				can_place(t_play *play, int x, int y)
 				return (FALSE);
 		}
 	}
-	if (count == 1)
-	{
-		play->x = x - LEFT->x;
-		play->y = y - TOP->y;
-		return (TRUE);
-	}
-	else
-		return (FALSE);
+	return (can_place_bis(play, x, y, count));
 }
 
-void					find_direction(t_play *play)
+void				find_direction(t_play *play)
 {
 	if (ENEMY->top->y > ME->bottom->y || ENEMY->bottom->y > ME->bottom->y)
 		DIR->down = TRUE;
@@ -76,7 +81,7 @@ void					find_direction(t_play *play)
 		DIR->right = TRUE;
 }
 
-void					place_anywhere(t_play *play)
+int				place_anywhere(t_play *play)
 {
 	int				x;
 	int				y;
@@ -93,29 +98,28 @@ void					place_anywhere(t_play *play)
 					&& y >= 0 && y <= play->plateau->y)
 				{
 					ft_printf("%d %d\n", play->y, play->x);
-					return ;
+					return (1);
 				}
 			}
 		}
 		y--;
 	}
-	ft_putendl("0 0");
+	free_play(play);
+	return (-1);
 }
-
-
 
 int					place_piece(t_play *play)
 {
 	find_direction(play);
 	if (DIR->up && TOPDIFF > BOTTOMDIFF)
-		up_priority(play);
+		return (up_priority(play));
 	else if (DIR->down && BOTTOMDIFF > TOPDIFF)
-		down_priority(play);
+		return (down_priority(play));
 	else if (DIR->right && RIGHTDIFF > LEFTDIFF)
-		right_priority(play);
+		return (right_priority(play));
 	else if (DIR->left && LEFTDIFF > RIGHTDIFF)
-		left_priority(play);
+		return (left_priority(play));
 	else
-		up_priority(play);
+		return (up_priority(play));
 	return (-1);
 }

@@ -100,33 +100,6 @@ void					find_piece_right(t_play *play)
 	}
 }
 
-void					malloc_real(t_play *play)
-{
-	int					x;
-	int					y;
-	int					left;
-	int					top;
-
-	y = 0;
-	top = TOP->y;
-	while (top <= BOTTOM->y)
-	{
-		x = 0;
-		left = LEFT->x;
-		if (!(REAL[y] = (char *)malloc(sizeof(char) * WIDTH + 1)))
-			ft_exit("Could not allocate line of real piece");
-		while (left <= RIGHT->x)
-		{
-			REAL[y][x] = PIECE[top][left];
-			left++;
-			x++;
-		}
-		top++;
-		y++;
-	}
-	REAL[y] = NULL;
-}
-
 void					find_piece(t_play *play)
 {
 	if (!(TERR = (t_territory *)malloc(sizeof(t_territory) * 1)))

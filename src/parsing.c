@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/12/22 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 15:49:22 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,7 @@
 #define BOARD play->plateau->board
 #define PIECE play->piece->piece
 
-void				put_board(t_play *play)
-{
-	int			y;
-
-	y = -1;
-	while (BOARD[++y])
-		ft_putendl(BOARD[y]);
-}
-
-void				parse_piece(t_play *play, int *part, char **line)
+int				parse_piece(t_play *play, int *part, char **line)
 {
 	if (part[2] == 0)
 	{
@@ -42,9 +33,13 @@ void				parse_piece(t_play *play, int *part, char **line)
 		find_territory(play);
 		find_enemy(play);
 		find_piece(play);
-		place_piece(play);
+		if (place_piece(play) != -1)
+			free_play(play);
+		else
+			return (-1);
 		setup_turn(play, part);
 	}
+	return (1);
 }
 
 void				parse_plateau(t_play *play, int *part, char **line)
@@ -75,13 +70,23 @@ t_bool				parse_player(t_play *play, int *part, char **line)
 	return (TRUE);
 }
 
-void				parse_turn(t_play *play, int *part)
+void				free_line(char **line)
+{
+	int			y;
+
+	y = 0;
+	while (line[y])
+		y++;
+	y += 1;
+	while (--y >= 0)
+		free(line[y]);
+}
+
+int				parse_turn(t_play *play, int *part)
 {
 	char			*str;
 	char			**line;
-	int			i;
 
-	i = 0;
 	while (ft_get_next_line(0, &str) > 0)
 	{
 		line = ft_strsplit(str, ' ');
@@ -92,8 +97,16 @@ void				parse_turn(t_play *play, int *part)
 			parse_plateau(play, part, line);
 		else if (ft_strcmp(line[0], "Piece") == 0
 			|| (part[2] < play->piece->y + 1))
-			parse_piece(play, part, line);
-		free(line);
+			if (parse_piece(play, part, line) == -1)
+			{
+				free_line(line);
+				free(line);
+				free(str);
+				return (-1);
+			}
+		free_line(line);
 		free(str);
+		free(line);
 	}
+	return (1);
 }

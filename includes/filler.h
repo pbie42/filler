@@ -6,12 +6,12 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2017/09/29 15:19:02 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 15:54:04 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER
-# define FILLER
+#ifndef FILLER_H
+# define FILLER_H
 
 # define TRUE 1
 # define FALSE 0
@@ -65,13 +65,13 @@
 # include "../libft/includes/libftprintf.h"
 # include <term.h>
 
-typedef int					t_bool;
+typedef int			t_bool;
 
 typedef struct		s_plateau
 {
 	int				x;
 	int				y;
-	char				**board;
+	char			**board;
 }					t_plateau;
 
 typedef struct		s_coords
@@ -82,10 +82,10 @@ typedef struct		s_coords
 
 typedef struct		s_territory
 {
-	t_coords			*top;
-	t_coords			*bottom;
-	t_coords			*left;
-	t_coords			*right;
+	t_coords		*top;
+	t_coords		*bottom;
+	t_coords		*left;
+	t_coords		*right;
 }					t_territory;
 
 typedef struct		s_piece
@@ -93,8 +93,8 @@ typedef struct		s_piece
 	int				x;
 	int				y;
 	t_territory		*terr;
-	char				**real;
-	char				**piece;
+	char			**real;
+	char			**piece;
 }					t_piece;
 
 typedef struct		s_direction
@@ -112,35 +112,40 @@ typedef struct		s_play
 	t_territory		*territory;
 	t_territory		*enemy;
 	t_direction		*dir;
-	char				symbol;
-	char				e_symbol;
+	char			symbol;
+	char			e_symbol;
 	int				player;
 	int				x;
 	int				y;
 }					t_play;
 
-void				parse_turn(t_play *play, int *part);
+int				parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
 void				find_enemy(t_play *play);
-int				place_piece(t_play *play);
-t_bool			piece_right(t_play *play);
-t_bool			piece_left(t_play *play);
-t_bool			piece_up(t_play *play);
-t_bool			piece_down(t_play *play);
-int				piece_down_right(t_play *play);
-int				piece_down_left(t_play *play);
-int				piece_up_left(t_play *play);
-int				piece_up_right(t_play *play);
-t_bool			can_place(t_play *play, int x, int y);
-int				compare_coords(t_play *play, int x, int y, char *str);
-int				ft_strhas(const char *s1, const char *s2);
+int					place_piece(t_play *play);
+t_bool				piece_right(t_play *play);
+t_bool				piece_left(t_play *play);
+t_bool				piece_up(t_play *play);
+t_bool				piece_down(t_play *play);
+int					piece_down_right(t_play *play);
+int					piece_down_left(t_play *play);
+int					piece_up_left(t_play *play);
+int					piece_up_right(t_play *play);
+t_bool				can_place(t_play *play, int x, int y);
+int					compare_coords(t_play *play, int x, int y, char *str);
+int					ft_strhas(const char *s1, const char *s2);
 void				setup_turn(t_play *play, int *part);
 void				find_piece(t_play *play);
-int				down_priority(t_play *play);
-int				up_priority(t_play *play);
-int				left_priority(t_play *play);
-int				right_priority(t_play *play);
-void					place_anywhere(t_play * play);
+int					down_priority(t_play *play);
+int					up_priority(t_play *play);
+int					left_priority(t_play *play);
+int					right_priority(t_play *play);
+t_bool				place_anywhere(t_play *play);
 void				enemy_setup(t_play *play);
+void				malloc_real(t_play *play);
+void				free_play(t_play *play);
+void				free_board(t_play *play);
+void				free_piece(t_play *play);
+void				free_real_piece(t_play *play);
 
 #endif

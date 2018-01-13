@@ -15,7 +15,9 @@ NAME = pbie.filler
 CFLAGS = -g -I includes
 
 SRC = main.c \
-		src/setup/enemy_setup.c \
+		src/utils/enemy_setup.c \
+		src/utils/free_play.c \
+		src/utils/malloc_real.c \
 		src/coordinates.c \
 		src/diagonal.c \
 		src/enemy.c \

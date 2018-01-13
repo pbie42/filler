@@ -6,13 +6,13 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2017/11/09 15:19:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 15:54:55 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void				setup_turn(t_play *play, int *part)
+void			setup_turn(t_play *play, int *part)
 {
 	if (!(play->plateau = (t_plateau *)malloc(sizeof(t_plateau) * 1)))
 		ft_exit("Could not allocate plateau");
@@ -45,6 +45,10 @@ int				main(void)
 		if (!(play = (t_play *)malloc(sizeof(t_play) * 1)))
 			ft_exit("Could not allocate play");
 	setup_turn(play, part);
-	parse_turn(play, part);
+	if (parse_turn(play, part) == -1)
+	{
+		free(play);
+		ft_putendl("0 0");
+	}
 	return (0);
 }

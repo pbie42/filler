@@ -34,18 +34,14 @@ int					down_priority(t_play *play)
 	int				x;
 
 	x = 0;
-	if (DIR->down && DIR->right)
-		if ((x = piece_down_right(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->left)
-		if ((x = piece_down_left(play)) != -1)
-			return (x);
-	if (DIR->up && DIR->right)
-		if ((x = piece_up_right(play)) != -1)
-			return (x);
-	if (DIR->up && DIR->left)
-		if ((x = piece_up_left(play)) != -1)
-			return (x);
+	if (DIR->down && DIR->right && (x = piece_down_right(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->left && (x = piece_down_left(play)) != -1)
+		return (x);
+	if (DIR->up && DIR->right && (x = piece_up_right(play)) != -1)
+		return (x);
+	if (DIR->up && DIR->left && (x = piece_up_left(play)) != -1)
+		return (x);
 	if (DIR->up)
 		if (piece_up(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
@@ -58,8 +54,7 @@ int					down_priority(t_play *play)
 	if (DIR->right)
 		if (piece_right(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
-	place_anywhere(play);
-	return (-1);
+	return (place_anywhere(play));
 }
 
 int					up_priority(t_play *play)
@@ -67,18 +62,14 @@ int					up_priority(t_play *play)
 	int				x;
 
 	x = 0;
-	if (DIR->up && DIR->right)
-		if ((x = piece_up_right(play)) != -1)
-			return (x);
-	if (DIR->up && DIR->left)
-		if ((x = piece_up_left(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->right)
-		if ((x = piece_down_right(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->left)
-		if ((x = piece_down_left(play)) != -1)
-			return (x);
+	if (DIR->up && DIR->right && (x = piece_up_right(play)) != -1)
+		return (x);
+	if (DIR->up && DIR->left && (x = piece_up_left(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->right && (x = piece_down_right(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->left && (x = piece_down_left(play)) != -1)
+		return (x);
 	if (DIR->up)
 		if (piece_up(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
@@ -91,8 +82,7 @@ int					up_priority(t_play *play)
 	if (DIR->right)
 		if (piece_right(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
-	place_anywhere(play);
-	return (-1);
+	return (place_anywhere(play));
 }
 
 int					left_priority(t_play *play)
@@ -100,18 +90,14 @@ int					left_priority(t_play *play)
 	int				x;
 
 	x = 0;
-	if (DIR->up && DIR->left)
-		if ((x = piece_up_left(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->left)
-		if ((x = piece_down_left(play)) != -1)
-			return (x);
-	if (DIR->up && DIR->right)
-		if ((x = piece_up_right(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->right)
-		if ((x = piece_down_right(play)) != -1)
-			return (x);
+	if (DIR->up && DIR->left && (x = piece_up_left(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->left && (x = piece_down_left(play)) != -1)
+		return (x);
+	if (DIR->up && DIR->right && (x = piece_up_right(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->right && (x = piece_down_right(play)) != -1)
+		return (x);
 	if (DIR->up)
 		if (piece_up(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
@@ -124,8 +110,7 @@ int					left_priority(t_play *play)
 	if (DIR->right)
 		if (piece_right(play))
 			return (ft_printf("%d %d\n", play->y, play->x));
-	place_anywhere(play);
-	return (-1);
+	return (place_anywhere(play));
 }
 
 int					right_priority(t_play *play)
@@ -133,30 +118,25 @@ int					right_priority(t_play *play)
 	int				x;
 
 	x = 0;
-	if (DIR->up && DIR->right)
-		if ((x = piece_up_right(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->right)
-		if ((x = piece_down_right(play)) != -1)
-			return (x);
-	if (DIR->up && DIR->left)
-		if ((x = piece_up_left(play)) != -1)
-			return (x);
-	if (DIR->down && DIR->left)
-		if ((x = piece_down_left(play)) != -1)
-			return (x);
+	if (DIR->up && DIR->right && (x = piece_up_right(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->right && (x = piece_down_right(play)) != -1)
+		return (x);
+	if (DIR->up && DIR->left && (x = piece_up_left(play)) != -1)
+		return (x);
+	if (DIR->down && DIR->left && (x = piece_down_left(play)) != -1)
+		return (x);
 	if (DIR->up)
 		if (piece_up(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->down)
 		if (piece_down(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->left)
 		if (piece_left(play))
-			return ft_printf("%d %d\n", play->y, play->x);
+			return (ft_printf("%d %d\n", play->y, play->x));
 	if (DIR->right)
 		if (piece_right(play))
-			return ft_printf("%d %d\n", play->y, play->x);
-	place_anywhere(play);
-	return (-1);
+			return (ft_printf("%d %d\n", play->y, play->x));
+	return (place_anywhere(play));
 }
