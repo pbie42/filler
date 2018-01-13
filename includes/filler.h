@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 13:17:17 by pbie              #+#    #+#             */
-/*   Updated: 2018/01/13 15:54:04 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 19:45:29 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct		s_play
 	int				y;
 }					t_play;
 
-int				parse_turn(t_play *play, int *part);
+int					parse_turn(t_play *play, int *part);
 void				find_territory(t_play *play);
 void				find_enemy(t_play *play);
 int					place_piece(t_play *play);

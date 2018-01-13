@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/01/13 15:49:22 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 19:47:30 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define BOARD play->plateau->board
 #define PIECE play->piece->piece
 
-int				parse_piece(t_play *play, int *part, char **line)
+int					parse_piece(t_play *play, int *part, char **line)
 {
 	if (part[2] == 0)
 	{
@@ -72,7 +72,7 @@ t_bool				parse_player(t_play *play, int *part, char **line)
 
 void				free_line(char **line)
 {
-	int			y;
+	int				y;
 
 	y = 0;
 	while (line[y])
@@ -82,7 +82,7 @@ void				free_line(char **line)
 		free(line[y]);
 }
 
-int				parse_turn(t_play *play, int *part)
+int					parse_turn(t_play *play, int *part)
 {
 	char			*str;
 	char			**line;

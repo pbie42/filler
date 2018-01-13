@@ -6,7 +6,7 @@
 /*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/23 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/01/13 15:49:05 by pbie             ###   ########.fr       */
+/*   Updated: 2018/01/13 19:45:48 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void				find_direction(t_play *play)
 		DIR->right = TRUE;
 }
 
-int				place_anywhere(t_play *play)
+int					place_anywhere(t_play *play)
 {
 	int				x;
 	int				y;
